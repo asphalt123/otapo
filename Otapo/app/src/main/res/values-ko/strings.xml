@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Otapo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="main_activity_title">Tapo 기기</string>
+    <string name="main_activity_devices">기기</string>
+    <string name="main_activity_groups">기기 그룹</string>
+    <string name="main_activity_loading">Tapo 기기를 검색하고 있어요…</string>
+    <string name="main_activity_not_found">Tapo 기기를 찾을 수 없어요</string>
+    <string name="main_activity_no_network">로컬 WiFi 네트워크에 연결할 수 없어요</string>
+    <string name="main_activity_reload_devices">기기 목록 새로고침</string>
+    <string name="main_activity_setup_new_device">새 기기 추가</string>
+    <string name="main_activity_new_group">새 그룹 만들기</string>
+    <string name="main_activity_del_group">선택한 그룹 삭제</string>
+    <string name="login_activity_title">로그인</string>
+    <string name="login_activity_email">이메일 주소</string>
+    <string name="login_activity_email_input">이메일 입력</string>
+    <string name="login_activity_password">비밀번호</string>
+    <string name="login_activity_password_input">비밀번호 입력</string>
+    <string name="login_activity_save_password">비밀번호 저장</string>
+    <string name="login_activity_submit">로그인</string>
+    <string name="login_activity_submit_loading">로그인하고 있어요…</string>
+    <string name="activity_login_signin_error">사용자 이름 또는 비밀번호가 올바르지 않아요</string>
+    <string name="activity_login_input_field_empty">유효한 인증 정보를 입력해 주세요</string>
+    <string name="device_activity_power">전원: %s</string>
+    <string name="device_activity_power_on">켜짐</string>
+    <string name="device_activity_power_off">꺼짐</string>
+    <string name="device_activity_brightness">밝기: %d%%</string>
+    <string name="device_activity_color">색상: %s</string>
+    <string name="device_activity_wait">잠시만 기다려 주세요…</string>
+    <string name="activity_main_not_found">기기를 찾을 수 없어요</string>
+    <string name="defines_the_brightness_value_for_seek_bar">시크 바의 밝기 값을 정해요</string>
+    <string name="new_group_activity_title">%d개 기기의 새 그룹 만들기</string>
+    <string name="new_group_activity_group_name">그룹 이름 입력</string>
+    <string name="new_group_activity_group_name_placeholder">거실</string>
+    <string name="new_group_activity_group_name_error_empty_name">그룹 이름을 입력해 주세요</string>
+    <string name="new_group_activity_group_name_error_duped">같은 이름의 그룹이 이미 있어요</string>
+    <string name="device_setup_activity_title">새 기기 추가</string>
+    <string name="device_setup_activity_device_address">기기 IP 주소 입력</string>
+    <string name="device_setup_activity_device_address_hint">192.168.178.32</string>
+    <string name="device_setup_activity_error_bad_address">잘못된 주소를 입력했어요</string>
+    <string name="device_setup_activity_error_unreachable">입력한 호스트에 연결할 수 없어요</string>
+    <string name="device_setup_activity_error_handhshake_failed">호스트를 Tapo 기기로 설정할 수 없어요</string>
+    <string name="device_setup_activity_loading_reachable">입력한 호스트에 연결하고 있어요</string>
+    <string name="device_setup_activity_loading_setup">기기를 설정하고 있어요</string>
+    <string name="device_setup_activity_disclaimer">공식 Tapo 앱에서 "타사 호환성"을 활성화해야 해요(프로필 → 설정). 활성화하지 않으면 기기가 로컬 연결을 거부해요.</string>
+    <string name="complication_config_title">컴플리케이션: 어떤 플러그인가요?</string>
+    <string name="complication_config_hint">컴플리케이션에 이 플러그의 상태가 워치 페이스에 표시돼요. 컴플리케이션을 탭해서 켜거나 꺼요.</string>
+    <string name="complication_no_device">알려진 플러그가 없어요 — OpenTapo를 열고 먼저 검색해 주세요.</string>
+</resources>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asphalt123.github.io/otapo/sitemap.xml

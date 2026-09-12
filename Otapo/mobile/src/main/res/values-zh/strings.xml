@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Otapo</string>
+    <string name="login_title">Tapo登录</string>
+    <string name="login_subtitle">在本地控制你的插座，无需云端</string>
+    <string name="login_hint">你的凭据仅用于本地登录（KLAP），并会与你的手表同步。</string>
+    <string name="login_email">邮箱</string>
+    <string name="login_password">密码</string>
+    <string name="login_button">登录</string>
+    <string name="device_list_title">我的设备</string>
+    <string name="device_list_subtitle">通过KLAP本地控制</string>
+    <string name="no_devices">未找到设备。\n请确保手机与插座在同一Wi-Fi网络上。</string>
+    <string name="refresh">刷新</string>
+    <string name="logout">退出登录</string>
+    <string name="add_by_ip">按IP添加</string>
+    <string name="add_device_title">添加设备</string>
+    <string name="add_device_hint">输入Tapo插座／灯具的本地IP地址。你可以在官方Tapo应用中找到：设备 → 齿轮图标。</string>
+    <string name="add_device_ip_hint">IP地址（例如192.168.1.140）</string>
+    <string name="add_device_button">添加</string>
+    <string name="compatibility_disclaimer">⚠️ 要使用本应用，请在官方Tapo应用中启用“第三方设备兼容性”（个人资料 → 设置）。否则新款插座会拒绝本地连接。</string>
+    <string name="error_generic">发生错误：%1$s</string>
+    <string name="state_on">开</string>
+    <string name="state_off">关</string>
+    <string name="state_offline">离线</string>
+    <string name="powering">发送中…</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="delete">删除</string>
+    <string name="close">关闭</string>
+    <!-- Widgets -->
+    <string name="widget_label">OpenTapo插座</string>
+    <string name="widget_desc">无需打开应用即可开关Tapo插座</string>
+    <string name="widget_turn_on">打开</string>
+    <string name="widget_turn_off">关闭</string>
+    <string name="widget_no_device">未知插座</string>
+    <string name="widget_configure">选择插座</string>
+    <string name="widget_config_title">选择微件插座</string>
+    <string name="widget_config_empty">没有设备：请先打开应用并运行扫描。</string>
+    <!-- Generic picker -->
+    <string name="picker_title_default">选择设备</string>
+    <string name="picker_none">无</string>
+    <!-- Quick Settings Tile -->
+    <string name="tile_label">OpenTapo</string>
+    <string name="tile_no_favorite">没有收藏的插座 — 点按选择</string>
+    <string name="tile_pick_title">选择收藏的插座</string>
+    <string name="tile_settings_title">快捷访问磁贴</string>
+    <string name="tile_settings_hint">可从通知面板（OpenTapo磁贴）控制此插座。请通过快捷面板的编辑按钮添加磁贴。</string>
+    <string name="tile_current">收藏：%1$s（%2$s）</string>
+    <string name="tile_clear">移除收藏</string>
+    <string name="menu_tile">快捷磁贴</string>
+    <!-- Notifications -->
+    <string name="notif_channel_timers">定时器</string>
+    <string name="notif_channel_monitor">设备监控</string>
+    <string name="notif_channel_persistent">常驻状态</string>
+    <!-- Timers -->
+    <string name="menu_timers">定时器</string>
+    <string name="timer_pick_device">选择设备</string>
+    <string name="timer_device_label">目标设备</string>
+    <string name="timer_no_device">未选择设备</string>
+    <string name="timer_need_device">请先选择设备</string>
+    <string name="timer_countdown_title">X分钟后关／开</string>
+    <string name="timer_minutes_hint">分钟（例如30）</string>
+    <string name="timer_target_on">打开（否则关闭）</string>
+    <string name="timer_start">启动定时器</string>
+    <string name="timer_bad_minutes">请输入1到10080分钟</string>
+    <string name="timer_started">定时器已启动（%1$d分钟）</string>
+    <string name="timer_none">没有活动的定时器。</string>
+    <string name="timer_row">%1$s → %2$s（%3$s后）</string>
+    <string name="timer_row_firing">%1$s → 触发中…</string>
+    <string name="timer_remaining_hm">%1$d小时%2$d分钟</string>
+    <string name="timer_remaining_m">%1$d分钟</string>
+    <string name="timer_expired_title">定时器：%1$s</string>
+    <string name="timer_expired_text">%1$s现在为%2$s。</string>
+    <string name="timer_failed_text">无法控制%1$s（离线？）。定时器已到期。</string>
+    <string name="timer_exact_hint">要使用精确时间触发，请允许OpenTapo使用确切闹钟。</string>
+    <string name="timer_exact_grant">允许确切闹钟</string>
+    <string name="schedule_title">重复计划</string>
+    <string name="schedule_add">添加计划</string>
+    <string name="schedule_added">已添加计划</string>
+    <string name="schedule_none">没有已编排的计划。</string>
+    <string name="schedule_every_day">每天</string>
+    <string name="schedule_days_hint">未选日期 = 每天。例如：每天晚上11点关闭。</string>
+    <string name="schedule_row">%1$s → %2$s，时间为%3$s（%4$s）</string>
+    <string name="schedule_fired_title">计划：%1$s</string>
+    <string name="day_mon">周一</string>
+    <string name="day_tue">周二</string>
+    <string name="day_wed">周三</string>
+    <string name="day_thu">周四</string>
+    <string name="day_fri">周五</string>
+    <string name="day_sat">周六</string>
+    <string name="day_sun">周日</string>
+    <!-- Device control -->
+    <string name="control_power">电源</string>
+    <string name="control_brightness_value">亮度：%1$d %%</string>
+    <string name="control_color_title">颜色</string>
+    <string name="control_color_hint">触摸色轮进行选择，松开即发送。</string>
+    <string name="control_color_value">颜色：色相%1$d，饱和度%2$d</string>
+    <string name="control_temp_value">白色：%1$d K</string>
+    <string name="menu_energy">能耗</string>
+    <!-- Energy -->
+    <string name="energy_subtitle">P110监测 — 每10秒读取一次</string>
+    <string name="energy_power">%.1f W</string>
+    <string name="energy_today">今日：%.3f kWh</string>
+    <string name="energy_month">本月：%.2f kWh</string>
+    <string name="energy_unavailable">电表不可用</string>
+    <string name="energy_no_data">暂无测量数据</string>
+    <!-- Offline monitoring -->
+    <string name="menu_monitor">监控</string>
+    <string name="monitor_hint">定期在本地（KLAP）检查每个插座，若其无法访问、恢复在线或在应用外被改变状态，你会收到提醒。</string>
+    <string name="monitor_enabled">启用监控</string>
+    <string name="monitor_persistent">常驻通知（已开启的插座）</string>
+    <string name="monitor_interval_title">检查频率（分钟）</string>
+    <string name="monitor_interval_value">每%1$d分钟检查一次</string>
+    <string name="monitor_check_now">立即检查</string>
+    <string name="monitor_checking">检查中…</string>
+    <string name="monitor_offline_title">离线：%1$s</string>
+    <string name="monitor_offline_text">%1$s在本地已无响应。请检查其电源和你的Wi-Fi。</string>
+    <string name="monitor_back_title">恢复：%1$s</string>
+    <string name="monitor_back_text">%1$s在本地恢复响应。</string>
+    <string name="monitor_changed_title">意外变化：%1$s</string>
+    <string name="monitor_changed_text">%1$s现在为%2$s（在应用外被更改）。</string>
+    <string name="monitor_persistent_title">OpenTapo</string>
+    <string name="monitor_persistent_text">%1$d／%2$d已开启 • %3$d离线</string>
+    <!-- Groups -->
+    <string name="menu_groups">分组</string>
+    <string name="group_list_hint">长按 = 全部开／关。拖动 = 排序。滑动 = 删除。点按 = 编辑。</string>
+    <string name="group_none">没有分组 — 请在下方创建你的第一个分组。</string>
+    <string name="group_members">%1$d个插座</string>
+    <string name="group_summary">%1$d／%2$d已开启</string>
+    <string name="group_card_hint">长按：全部开／关 • 点按：编辑</string>
+    <string name="group_drag_hint">重新排序</string>
+    <string name="group_create_title">创建分组</string>
+    <string name="group_name_hint">分组名称（例如客厅）</string>
+    <string name="group_name_empty">请为分组命名</string>
+    <string name="group_name_exists">已存在同名分组</string>
+    <string name="group_deleted">已删除分组%1$s</string>
+    <string name="group_empty">此分组不包含已知的插座</string>
+    <string name="group_applying">分组命令%1$s…</string>
+    <string name="group_applied">%1$s：%2$d／%3$d个插座成功</string>
+    <string name="group_edit_title">编辑分组</string>
+    <string name="group_members_hint">拖动排序，滑动或点按垃圾桶移除。</string>
+    <string name="group_add_device">添加插座</string>
+    <string name="group_no_more_devices">所有已知的插座都已在该分组中</string>
+    <string name="group_saved">已保存分组%1$s</string>
+    <string name="group_delete_title">删除%1$s？</string>
+    <!-- Geofencing -->
+    <string name="menu_geofence">GPS区域</string>
+    <string name="geofence_hint">进入区域时打开插座，离开时关闭。半径和动作按区域设置。</string>
+    <string name="geofence_label_hint">区域名称（例如家）</string>
+    <string name="geofence_lat_hint">纬度（例如48.85）</string>
+    <string name="geofence_lng_hint">经度（例如2.35）</string>
+    <string name="geofence_here">使用我的位置</string>
+    <string name="geofence_radius_value">半径：%1$d米</string>
+    <string name="geofence_no_device">未选择插座</string>
+    <string name="geofence_pick_devices">选择插座</string>
+    <string name="geofence_on_enter">进入时</string>
+    <string name="geofence_on_exit">离开时</string>
+    <string name="geofence_action_on">打开</string>
+    <string name="geofence_action_off">关闭</string>
+    <string name="geofence_action_none">无操作</string>
+    <string name="geofence_save">添加区域</string>
+    <string name="geofence_none">未定义任何区域。</string>
+    <string name="geofence_added">已添加区域%1$s</string>
+    <string name="geofence_need_label">请为区域命名</string>
+    <string name="geofence_need_coords">坐标无效（纬度 −90…90，经度 −180…180）</string>
+    <string name="geofence_need_location">请允许位置权限以使用GPS区域</string>
+    <string name="geofence_no_fix">无法获取位置 — 请开启GPS并到室外重试</string>
+    <string name="geofence_fix_ok">已填入位置</string>
+    <string name="geofence_enter_title">欢迎：%1$s</string>
+    <string name="geofence_exit_title">离开：%1$s</string>
+    <string name="geofence_applied">%1$s：%2$d／%3$d个插座%4$s</string>
+    <!-- Multi-account -->
+    <string name="menu_accounts">账号</string>
+    <string name="account_hint">在你的Tapo账号（家庭、工作…）之间切换。当前账号驱动应用和手表；每个账号保留各自的设备网络。</string>
+    <string name="account_none">没有账号 — 请先登录。</string>
+    <string name="account_add_title">添加账号</string>
+    <string name="account_label_hint">名称（例如工作）</string>
+    <string name="account_need_all">请填写名称、邮箱和密码</string>
+    <string name="account_added">已添加账号%1$s</string>
+    <string name="account_switched">当前账号：%1$s — 正在重新扫描…</string>
+    <string name="account_deleted">已删除账号%1$s</string>
+    <string name="account_delete_title">删除%1$s？</string>
+    <string name="account_delete_hint">此账号的设备将从本手机中删除。</string>
+    <!-- Voice shortcuts -->
+    <string name="menu_voice">语音助手</string>
+    <string name="voice_intro">可通过语音或长按OpenTapo图标来控制插座。试试说：</string>
+    <string name="voice_examples">• “Ok Google, turn on the living room plug with OpenTapo”\n• “Ok Google, turn off the office plug with OpenTapo”\n• 长按OpenTapo图标 → 点按插座进行切换\n• 深层链接：opentapo://toggle?device=LivingRoom&amp;state=on</string>
+    <string name="voice_publish">发布插座快捷方式</string>
+    <string name="voice_published">快捷方式已发布到启动器</string>
+    <string name="voice_no_match">无法识别插座 — 请按列表中显示的名称说出</string>
+    <string name="voice_all_result">已控制%1$d／%2$d个插座</string>
+    <string name="voice_all_on">全部打开</string>
+    <string name="voice_all_off">全部关闭</string>
+    <string name="voice_shortcut_long">%1$s — 切换为%2$s</string>
+    <!-- Backup/Restore -->
+    <string name="menu_backup">备份</string>
+    <string name="backup_hint">将设备、分组、GPS区域、定时器和账号（密码用你的口令加密）导出为JSON文件。要分享：请通过两个不同的渠道分别发送文件和口令。</string>
+    <string name="backup_passphrase_hint">口令（至少4个字符）</string>
+    <string name="backup_need_passphrase">请选择至少4个字符的口令</string>
+    <string name="backup_export">导出到文件</string>
+    <string name="backup_import">从文件恢复</string>
+    <string name="backup_share">分享上次导出</string>
+    <string name="backup_share_subject">OpenTapo备份</string>
+    <string name="backup_export_first">请先导出备份</string>
+    <string name="backup_exported">备份已导出</string>
+    <string name="backup_imported">备份已恢复（%1$d个账号）— 正在重新扫描…</string>
+</resources>

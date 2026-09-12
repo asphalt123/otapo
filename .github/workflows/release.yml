@@ -1,0 +1,36 @@
+name: Release APKs
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Otapo
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - run: chmod +x gradlew
+
+      - name: Build Wear OS
+        run: ./gradlew :app:assembleDebug --no-daemon
+
+      - name: Build Mobile
+        run: ./gradlew :mobile:assembleDebug --no-daemon
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Otapo/app/build/outputs/apk/debug/*.apk,Otapo/mobile/build/outputs/apk/debug/*.apk

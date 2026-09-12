@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Otapo</string>
+    <string name="login_title">Tapo-Anmeldung</string>
+    <string name="login_subtitle">Steuern Sie Ihre Plugs lokal, ohne Cloud</string>
+    <string name="login_hint">Ihre Anmeldedaten werden nur für die lokale Anmeldung (KLAP) verwendet und mit Ihrer Uhr synchronisiert.</string>
+    <string name="login_email">E-Mail</string>
+    <string name="login_password">Passwort</string>
+    <string name="login_button">Anmelden</string>
+    <string name="device_list_title">Meine Geräte</string>
+    <string name="device_list_subtitle">Lokale Steuerung via KLAP</string>
+    <string name="no_devices">Keine Geräte gefunden.\nStellen Sie sicher, dass sich Ihr Smartphone im selben WLAN wie Ihre Plugs befindet.</string>
+    <string name="refresh">Aktualisieren</string>
+    <string name="logout">Abmelden</string>
+    <string name="add_by_ip">Per IP hinzufügen</string>
+    <string name="add_device_title">Gerät hinzufügen</string>
+    <string name="add_device_hint">Geben Sie die lokale IP-Adresse Ihres Plugs/Ihrer Lampe (Tapo) ein. Sie finden sie in der offiziellen Tapo-App: Gerät → Zahnradsymbol.</string>
+    <string name="add_device_ip_hint">IP-Adresse (z. B. 192.168.1.140)</string>
+    <string name="add_device_button">Hinzufügen</string>
+    <string name="compatibility_disclaimer">⚠️ Damit die App funktioniert, aktivieren Sie „Kompatibilität mit Drittanbietern“ in der offiziellen Tapo-App (Profil → Einstellungen). Ohne sie lehnen aktuelle Plugs lokale Verbindungen ab.</string>
+    <string name="error_generic">Ein Fehler ist aufgetreten: %1$s</string>
+    <string name="state_on">Ein</string>
+    <string name="state_off">Aus</string>
+    <string name="state_offline">Offline</string>
+    <string name="powering">Wird gesendet…</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="save">Speichern</string>
+    <string name="delete">Löschen</string>
+    <string name="close">Schließen</string>
+    <!-- Widgets -->
+    <string name="widget_label">OpenTapo-Plug</string>
+    <string name="widget_desc">Tapo-Plug ein- und ausschalten, ohne die App zu öffnen</string>
+    <string name="widget_turn_on">Einschalten</string>
+    <string name="widget_turn_off">Ausschalten</string>
+    <string name="widget_no_device">Unbekannter Plug</string>
+    <string name="widget_configure">Plug wählen</string>
+    <string name="widget_config_title">Widget-Plug wählen</string>
+    <string name="widget_config_empty">Keine Geräte: Öffnen Sie erst die App und starten Sie einen Scan.</string>
+    <!-- Generic picker -->
+    <string name="picker_title_default">Gerät wählen</string>
+    <string name="picker_none">Keines</string>
+    <!-- Quick Settings Tile -->
+    <string name="tile_label">OpenTapo</string>
+    <string name="tile_no_favorite">Kein Lieblings-Plug — zum Auswählen tippen</string>
+    <string name="tile_pick_title">Lieblings-Plug wählen</string>
+    <string name="tile_settings_title">Schnellzugriff-Kachel</string>
+    <string name="tile_settings_hint">Dieser Plug wird über das Benachrichtigungsfeld (OpenTapo-Kachel) gesteuert. Fügen Sie die Kachel über die Bearbeiten-Schaltfläche des Schnellzugriffs hinzu.</string>
+    <string name="tile_current">Favorit: %1$s (%2$s)</string>
+    <string name="tile_clear">Favorit entfernen</string>
+    <string name="menu_tile">Schnellkachel</string>
+    <!-- Notifications -->
+    <string name="notif_channel_timers">Timer</string>
+    <string name="notif_channel_monitor">Geräteüberwachung</string>
+    <string name="notif_channel_persistent">Dauerhafter Status</string>
+    <!-- Timers -->
+    <string name="menu_timers">Timer</string>
+    <string name="timer_pick_device">Gerät wählen</string>
+    <string name="timer_device_label">Zielgerät</string>
+    <string name="timer_no_device">Kein Gerät ausgewählt</string>
+    <string name="timer_need_device">Wählen Sie zuerst ein Gerät</string>
+    <string name="timer_countdown_title">In X Minuten ein- oder ausschalten</string>
+    <string name="timer_minutes_hint">Minuten (z. B. 30)</string>
+    <string name="timer_target_on">Einschalten (sonst ausschalten)</string>
+    <string name="timer_start">Timer starten</string>
+    <string name="timer_bad_minutes">1 bis 10080 Minuten eingeben</string>
+    <string name="timer_started">Timer gestartet (%1$d Min.)</string>
+    <string name="timer_none">Keine aktiven Timer.</string>
+    <string name="timer_row">%1$s → %2$s (in %3$s)</string>
+    <string name="timer_row_firing">%1$s → wird ausgelöst…</string>
+    <string name="timer_remaining_hm">%1$d Std. %2$d Min.</string>
+    <string name="timer_remaining_m">%1$d Min.</string>
+    <string name="timer_expired_title">Timer: %1$s</string>
+    <string name="timer_expired_text">%1$s ist jetzt %2$s.</string>
+    <string name="timer_failed_text">%1$s konnte nicht gesteuert werden (offline?). Der Timer ist abgelaufen.</string>
+    <string name="timer_exact_hint">Für zeitgenaue Auslöser erlauben Sie exakte Alarme für OpenTapo.</string>
+    <string name="timer_exact_grant">Exakte Alarme erlauben</string>
+    <string name="schedule_title">Wiederkehrende Zeitpläne</string>
+    <string name="schedule_add">Zeitplan hinzufügen</string>
+    <string name="schedule_added">Zeitplan hinzugefügt</string>
+    <string name="schedule_none">Keine Zeitpläne programmiert.</string>
+    <string name="schedule_every_day">täglich</string>
+    <string name="schedule_days_hint">Kein Tag = täglich. Z. B.: jeden Tag um 23 Uhr ausschalten.</string>
+    <string name="schedule_row">%1$s → %2$s um %3$s (%4$s)</string>
+    <string name="schedule_fired_title">Zeitplan: %1$s</string>
+    <string name="day_mon">Mo</string>
+    <string name="day_tue">Di</string>
+    <string name="day_wed">Mi</string>
+    <string name="day_thu">Do</string>
+    <string name="day_fri">Fr</string>
+    <string name="day_sat">Sa</string>
+    <string name="day_sun">So</string>
+    <!-- Device control -->
+    <string name="control_power">Power</string>
+    <string name="control_brightness_value">Helligkeit: %1$d %%</string>
+    <string name="control_color_title">Farbe</string>
+    <string name="control_color_hint">Berühren Sie das Rad zur Auswahl, loslassen zum Senden.</string>
+    <string name="control_color_value">Farbe: Farbton %1$d, Sättigung %2$d</string>
+    <string name="control_temp_value">Weiß: %1$d K</string>
+    <string name="menu_energy">Energie</string>
+    <!-- Energy -->
+    <string name="energy_subtitle">P110-Monitor — Messung alle 10 s</string>
+    <string name="energy_power">%.1f W</string>
+    <string name="energy_today">Heute: %.3f kWh</string>
+    <string name="energy_month">Monat: %.2f kWh</string>
+    <string name="energy_unavailable">Zähler nicht verfügbar</string>
+    <string name="energy_no_data">Noch keine Messungen</string>
+    <!-- Offline monitoring -->
+    <string name="menu_monitor">Überwachung</string>
+    <string name="monitor_hint">Prüft jeden Plug regelmäßig lokal (KLAP) und benachrichtigt Sie, wenn er nicht mehr erreichbar ist, wieder online kommt oder seinen Zustand außerhalb der App ändert.</string>
+    <string name="monitor_enabled">Überwachung aktivieren</string>
+    <string name="monitor_persistent">Dauerhafte Benachrichtigung (eingeschaltete Plugs)</string>
+    <string name="monitor_interval_title">Prüfhäufigkeit (Minuten)</string>
+    <string name="monitor_interval_value">Alle %1$d Min. prüfen</string>
+    <string name="monitor_check_now">Jetzt prüfen</string>
+    <string name="monitor_checking">Wird geprüft…</string>
+    <string name="monitor_offline_title">Offline: %1$s</string>
+    <string name="monitor_offline_text">%1$s antwortet lokal nicht mehr. Prüfen Sie Stromversorgung und WLAN.</string>
+    <string name="monitor_back_title">Zurück: %1$s</string>
+    <string name="monitor_back_text">%1$s antwortet lokal wieder.</string>
+    <string name="monitor_changed_title">Unerwartete Änderung: %1$s</string>
+    <string name="monitor_changed_text">%1$s ist jetzt %2$s (außerhalb der App geändert).</string>
+    <string name="monitor_persistent_title">OpenTapo</string>
+    <string name="monitor_persistent_text">%1$d/%2$d ein • %3$d offline</string>
+    <!-- Groups -->
+    <string name="menu_groups">Gruppen</string>
+    <string name="group_list_hint">Lang drücken = alle ein-/ausschalten. Ziehen = sortieren. Wischen = löschen. Tippen = bearbeiten.</string>
+    <string name="group_none">Keine Gruppen — erstellen Sie unten Ihre erste Gruppe.</string>
+    <string name="group_members">%1$d Plug(s)</string>
+    <string name="group_summary">%1$d/%2$d ein</string>
+    <string name="group_card_hint">Lang: alle EIN/AUS • Tippen: bearbeiten</string>
+    <string name="group_drag_hint">Sortieren</string>
+    <string name="group_create_title">Gruppe erstellen</string>
+    <string name="group_name_hint">Gruppenname (z. B. Wohnzimmer)</string>
+    <string name="group_name_empty">Geben Sie der Gruppe einen Namen</string>
+    <string name="group_name_exists">Eine Gruppe hat diesen Namen bereits</string>
+    <string name="group_deleted">Gruppe %1$s gelöscht</string>
+    <string name="group_empty">Diese Gruppe enthält keine bekannten Plugs</string>
+    <string name="group_applying">Gruppenbefehl %1$s…</string>
+    <string name="group_applied">%1$s: %2$d/%3$d Plug(s) OK</string>
+    <string name="group_edit_title">Gruppe bearbeiten</string>
+    <string name="group_members_hint">Zum Sortieren ziehen, zum Entfernen wischen oder auf den Papierkorb tippen.</string>
+    <string name="group_add_device">Plug hinzufügen</string>
+    <string name="group_no_more_devices">Alle bekannten Plugs sind bereits in der Gruppe</string>
+    <string name="group_saved">Gruppe %1$s gespeichert</string>
+    <string name="group_delete_title">%1$s löschen?</string>
+    <!-- Geofencing -->
+    <string name="menu_geofence">GPS-Zonen</string>
+    <string name="geofence_hint">Schalten Sie Ihre Plugs beim Betreten eines Bereichs ein, beim Verlassen aus. Radius und Aktionen werden pro Zone festgelegt.</string>
+    <string name="geofence_label_hint">Zonenname (z. B. Zuhause)</string>
+    <string name="geofence_lat_hint">Breitengrad (z. B. 48.85)</string>
+    <string name="geofence_lng_hint">Längengrad (z. B. 2.35)</string>
+    <string name="geofence_here">Meinen Standort verwenden</string>
+    <string name="geofence_radius_value">Radius: %1$d m</string>
+    <string name="geofence_no_device">Kein Plug ausgewählt</string>
+    <string name="geofence_pick_devices">Plugs wählen</string>
+    <string name="geofence_on_enter">Beim Betreten</string>
+    <string name="geofence_on_exit">Beim Verlassen</string>
+    <string name="geofence_action_on">Einschalten</string>
+    <string name="geofence_action_off">Ausschalten</string>
+    <string name="geofence_action_none">Nichts</string>
+    <string name="geofence_save">Zone hinzufügen</string>
+    <string name="geofence_none">Keine Zonen definiert.</string>
+    <string name="geofence_added">Zone %1$s hinzugefügt</string>
+    <string name="geofence_need_label">Geben Sie der Zone einen Namen</string>
+    <string name="geofence_need_coords">Ungültige Koordinaten (Breitengrad −90…90, Längengrad −180…180)</string>
+    <string name="geofence_need_location">Erlauben Sie den Standort, um GPS-Zonen zu nutzen</string>
+    <string name="geofence_no_fix">Standort nicht verfügbar — draußen oder mit aktiviertem GPS erneut versuchen</string>
+    <string name="geofence_fix_ok">Standort übernommen</string>
+    <string name="geofence_enter_title">Willkommen: %1$s</string>
+    <string name="geofence_exit_title">Verlassen: %1$s</string>
+    <string name="geofence_applied">%1$s: %2$d/%3$d Plug(s) %4$s</string>
+    <!-- Multi-account -->
+    <string name="menu_accounts">Konten</string>
+    <string name="account_hint">Wechseln Sie zwischen Ihren Tapo-Konten (Zuhause, Arbeit…). Das aktive Konto steuert App und Uhr; jedes Konto behält sein eigenes Gerätenetz.</string>
+    <string name="account_none">Keine Konten — melden Sie sich zuerst an.</string>
+    <string name="account_add_title">Konto hinzufügen</string>
+    <string name="account_label_hint">Name (z. B. Arbeit)</string>
+    <string name="account_need_all">Name, E-Mail und Passwort ausfüllen</string>
+    <string name="account_added">Konto %1$s hinzugefügt</string>
+    <string name="account_switched">Aktives Konto: %1$s — neuer Scan läuft…</string>
+    <string name="account_deleted">Konto %1$s gelöscht</string>
+    <string name="account_delete_title">%1$s löschen?</string>
+    <string name="account_delete_hint">Die Geräte dieses Kontos werden auf diesem Smartphone vergessen.</string>
+    <!-- Voice shortcuts -->
+    <string name="menu_voice">Sprachassistent</string>
+    <string name="voice_intro">Steuern Sie Ihre Plugs per Sprache oder per langem Druck auf das OpenTapo-Symbol. Versuchen Sie:</string>
+    <string name="voice_examples">• „Ok Google, schalte den Wohnzimmer-Plug mit OpenTapo ein“\n• „Ok Google, schalte den Büro-Plug mit OpenTapo aus“\n• OpenTapo-Symbol lange drücken → Plug zum Umschalten tippen\n• Deep Link: opentapo://toggle?device=Wohnzimmer&amp;state=on</string>
+    <string name="voice_publish">Plug-Verknüpfungen veröffentlichen</string>
+    <string name="voice_published">Verknüpfungen im Launcher veröffentlicht</string>
+    <string name="voice_no_match">Kein Plug erkannt — nennen Sie seinen Namen wie in der Liste angezeigt</string>
+    <string name="voice_all_result">%1$d/%2$d Plug(s) gesteuert</string>
+    <string name="voice_all_on">Alles einschalten</string>
+    <string name="voice_all_off">Alles ausschalten</string>
+    <string name="voice_shortcut_long">%1$s — wechseln zu %2$s</string>
+    <!-- Backup/Restore -->
+    <string name="menu_backup">Sicherung</string>
+    <string name="backup_hint">Exportiert Geräte, Gruppen, GPS-Zonen, Timer und Konten (Passwörter mit Ihrer Passphrase verschlüsselt) in eine JSON-Datei. Zum Teilen: Datei + Passphrase über zwei getrennte Kanäle senden.</string>
+    <string name="backup_passphrase_hint">Passphrase (mind. 4 Zeichen)</string>
+    <string name="backup_need_passphrase">Wählen Sie eine Passphrase mit mindestens 4 Zeichen</string>
+    <string name="backup_export">In Datei exportieren</string>
+    <string name="backup_import">Aus Datei wiederherstellen</string>
+    <string name="backup_share">Letzten Export teilen</string>
+    <string name="backup_share_subject">OpenTapo-Sicherung</string>
+    <string name="backup_export_first">Exportieren Sie zuerst die Sicherung</string>
+    <string name="backup_exported">Sicherung exportiert</string>
+    <string name="backup_imported">Sicherung wiederhergestellt (%1$d Konten) — neuer Scan läuft…</string>
+</resources>

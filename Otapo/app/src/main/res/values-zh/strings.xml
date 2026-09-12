@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Otapo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="main_activity_title">Tapo设备</string>
+    <string name="main_activity_devices">设备</string>
+    <string name="main_activity_groups">设备分组</string>
+    <string name="main_activity_loading">正在搜索Tapo设备…</string>
+    <string name="main_activity_not_found">未找到任何Tapo设备</string>
+    <string name="main_activity_no_network">无法连接到本地WiFi网络</string>
+    <string name="main_activity_reload_devices">重新加载设备列表</string>
+    <string name="main_activity_setup_new_device">添加新设备</string>
+    <string name="main_activity_new_group">创建新分组</string>
+    <string name="main_activity_del_group">删除所选分组</string>
+    <string name="login_activity_title">登录</string>
+    <string name="login_activity_email">电子邮箱</string>
+    <string name="login_activity_email_input">输入邮箱</string>
+    <string name="login_activity_password">密码</string>
+    <string name="login_activity_password_input">输入密码</string>
+    <string name="login_activity_save_password">保存密码</string>
+    <string name="login_activity_submit">登录</string>
+    <string name="login_activity_submit_loading">正在登录…</string>
+    <string name="activity_login_signin_error">用户名或密码无效</string>
+    <string name="activity_login_input_field_empty">你必须提供有效的凭据</string>
+    <string name="device_activity_power">电源：%s</string>
+    <string name="device_activity_power_on">开</string>
+    <string name="device_activity_power_off">关</string>
+    <string name="device_activity_brightness">亮度：%d%%</string>
+    <string name="device_activity_color">颜色：%s</string>
+    <string name="device_activity_wait">请稍候…</string>
+    <string name="activity_main_not_found">未找到设备</string>
+    <string name="defines_the_brightness_value_for_seek_bar">定义滑动条的亮度值</string>
+    <string name="new_group_activity_title">为%d台设备创建新分组</string>
+    <string name="new_group_activity_group_name">输入分组名称</string>
+    <string name="new_group_activity_group_name_placeholder">客厅</string>
+    <string name="new_group_activity_group_name_error_empty_name">分组名称不能为空</string>
+    <string name="new_group_activity_group_name_error_duped">已存在同名分组</string>
+    <string name="device_setup_activity_title">添加新设备</string>
+    <string name="device_setup_activity_device_address">输入设备IP地址</string>
+    <string name="device_setup_activity_device_address_hint">192.168.178.32</string>
+    <string name="device_setup_activity_error_bad_address">你输入的地址无效</string>
+    <string name="device_setup_activity_error_unreachable">提供的主机无法访问</string>
+    <string name="device_setup_activity_error_handhshake_failed">无法将该主机配置为Tapo设备</string>
+    <string name="device_setup_activity_loading_reachable">正在连接提供的主机</string>
+    <string name="device_setup_activity_loading_setup">正在设置设备</string>
+    <string name="device_setup_activity_disclaimer">需要在官方Tapo应用中启用“第三方兼容性”（个人资料 → 设置）。否则设备会拒绝本地连接。</string>
+    <string name="complication_config_title">复杂功能：选择哪个插座？</string>
+    <string name="complication_config_hint">复杂功能会在表盘上显示此插座的状态。点按复杂功能即可将其打开／关闭。</string>
+    <string name="complication_no_device">没有已知的插座 — 请先打开OpenTapo并扫描。</string>
+</resources>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Otapo — Controle Tapo localmente com Android e Wear OS</title>
+<meta name="description" content="Otapo controla tomadas e lâmpadas Tapo localmente pelo Android e Wear OS. Sem nuvem, sem rastreio. Grupos, energia, temporizadores, geofencing.">
+<link rel="canonical" href="https://asphalt123.github.io/otapo/pt/">
+<link rel="alternate" hreflang="x-default" href="https://asphalt123.github.io/otapo/">
+<link rel="alternate" hreflang="en" href="https://asphalt123.github.io/otapo/">
+<link rel="alternate" hreflang="fr" href="https://asphalt123.github.io/otapo/fr/">
+<link rel="alternate" hreflang="de" href="https://asphalt123.github.io/otapo/de/">
+<link rel="alternate" hreflang="es" href="https://asphalt123.github.io/otapo/es/">
+<link rel="alternate" hreflang="it" href="https://asphalt123.github.io/otapo/it/">
+<link rel="alternate" hreflang="pt" href="https://asphalt123.github.io/otapo/pt/">
+<link rel="alternate" hreflang="nl" href="https://asphalt123.github.io/otapo/nl/">
+<link rel="alternate" hreflang="pl" href="https://asphalt123.github.io/otapo/pl/">
+<link rel="alternate" hreflang="ja" href="https://asphalt123.github.io/otapo/ja/">
+<link rel="alternate" hreflang="ko" href="https://asphalt123.github.io/otapo/ko/">
+<link rel="alternate" hreflang="zh" href="https://asphalt123.github.io/otapo/zh/">
+<link rel="alternate" hreflang="ar" href="https://asphalt123.github.io/otapo/ar/">
+<link rel="alternate" hreflang="ru" href="https://asphalt123.github.io/otapo/ru/">
+<link rel="alternate" hreflang="hi" href="https://asphalt123.github.io/otapo/hi/">
+<link rel="alternate" hreflang="tr" href="https://asphalt123.github.io/otapo/tr/">
+<link rel="alternate" hreflang="uk" href="https://asphalt123.github.io/otapo/uk/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#08090c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Otapo">
+<meta property="og:title" content="Otapo — Controle Tapo localmente com Android e Wear OS">
+<meta property="og:description" content="Otapo controla tomadas e lâmpadas Tapo localmente pelo Android e Wear OS. Sem nuvem, sem rastreio. Grupos, energia, temporizadores, geofencing.">
+<meta property="og:url" content="https://asphalt123.github.io/otapo/pt/">
+<meta property="og:image" content="https://asphalt123.github.io/otapo/og-image.png">
+<meta property="og:image:alt" content="Otapo">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Otapo — Controle Tapo localmente com Android e Wear OS">
+<meta name="twitter:description" content="Otapo controla tomadas e lâmpadas Tapo localmente pelo Android e Wear OS. Sem nuvem, sem rastreio. Grupos, energia, temporizadores, geofencing.">
+<meta name="twitter:image" content="https://asphalt123.github.io/otapo/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c5ff3a'/%3E%3Ctext x='32' y='44' font-size='30' text-anchor='middle' fill='black' font-family='sans-serif' font-weight='bold'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Otapo","applicationCategory":"UtilitiesApplication","operatingSystem":"Android, Wear OS","inLanguage":"pt","url":"https://asphalt123.github.io/otapo/pt/","downloadUrl":"https://github.com/asphalt123/otapo","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"softwareVersion":"0.1.0","license":"https://opensource.org/licenses/MIT"}</script>
+<style>*{box-sizing:border-box}
+:root{--bg:#08090c;--surface:#0e1116;--tx:#f2f4f7;--mut:#9aa1ad;--line:rgba(255,255,255,.09);--lime:#c5ff3a;--lime-ink:#101500;--r:14px;--ease:cubic-bezier(.22,1,.36,1)}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{line-height:1.08;letter-spacing:-.03em;margin:0 0 .7rem;font-weight:650}
+h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:680}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem)}
+a{color:inherit}
+::selection{background:rgba(197,255,58,.28)}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--lime);color:#000;padding:.7rem 1.1rem;border-radius:10px;z-index:200;font-weight:700}
+.skip:focus{left:1rem;top:1rem}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:100;background:rgba(8,9,12,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;padding:.9rem 24px}
+.logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.12rem;color:var(--tx);text-decoration:none;letter-spacing:-.02em}
+.mark{width:28px;height:28px;border-radius:8px;background:var(--lime);display:grid;place-items:center;font-size:1rem;color:#000;font-weight:800}
+.links{margin-inline-start:auto;display:flex;gap:1.2rem;align-items:center}
+.links a.nl{color:var(--mut);text-decoration:none;font-size:.92rem;transition:color .2s}
+.links a.nl:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:650;text-decoration:none;border-radius:12px;padding:.95rem 1.6rem;font-size:.98rem;border:1px solid transparent;cursor:pointer;transition:opacity .2s var(--ease),transform .2s var(--ease),background .2s}
+.btn-primary{background:var(--lime);color:var(--lime-ink)!important}
+.btn-primary:hover{opacity:.88;transform:translateY(-2px)}
+.btn-secondary{background:#151a21;color:var(--tx)!important;border-color:var(--line)}
+.btn-secondary:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.22)}
+.btn-sm{padding:.62rem 1.05rem;font-size:.9rem;border-radius:10px}
+select.lang{background:#151a21;color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:.88rem;cursor:pointer}
+select.lang option{color:#111}
+section.block{padding:100px 0;border-top:1px solid var(--line)}
+section.block:first-of-type{border-top:0}
+.eyebrow{color:var(--lime);font-weight:650;letter-spacing:.1em;text-transform:uppercase;font-size:.76rem;margin:0 0 .7rem}
+.sub{color:var(--mut);max-width:38rem;margin:0 0 3rem;font-size:1.06rem}
+/* hero */
+.hero{padding:110px 0 90px;display:grid;grid-template-columns:1.05fr .95fr;gap:4rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--line);color:var(--mut);padding:.42rem .95rem;border-radius:999px;font-size:.82rem;background:rgba(255,255,255,.02)}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--lime);flex:none}
+.lime{color:var(--lime)}
+.lead{color:var(--mut);font-size:1.13rem;max-width:33rem;margin:1.2rem 0 0}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap;margin:2rem 0 .9rem}
+.micro{color:var(--mut);font-size:.87rem;margin:0}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:0}
+.stat b{display:block;font-size:2.5rem;font-weight:680;letter-spacing:-.04em;line-height:1.1}
+.stat span{color:var(--mut);font-size:.9rem}
+/* mockup */
+.mock{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:1.4rem;min-height:440px}
+.mock-glow{position:absolute;left:50%;top:50%;width:480px;height:480px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(197,255,58,.20),transparent 65%);filter:blur(70px);animation:glowPulse 5s ease-in-out infinite;pointer-events:none}
+@keyframes glowPulse{0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+.phone{position:relative;width:240px;border-radius:36px;padding:10px;background:#10141b;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.55);animation:floatY 6s ease-in-out infinite}
+.screen{background:#0a0d12;border-radius:28px;padding:.95rem;min-height:370px;border:1px solid rgba(255,255,255,.06)}
+.notch{width:100px;height:20px;background:#000;border-radius:999px;margin:0 auto .9rem;border:1px solid rgba(255,255,255,.06)}
+.srow{display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.65rem .75rem;margin:.5rem 0;font-size:.85rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--lime);flex:none}
+.dot.off{background:#3a414b}
+.tgl{margin-inline-start:auto;font-size:.7rem;font-weight:750;color:var(--lime)}
+.tgl.off{color:var(--mut)}
+.watch{position:relative;width:180px;border-radius:44px;padding:10px;background:#10141b;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.55);animation:floatY 7s ease-in-out infinite reverse}
+.watch .screen{border-radius:34px;min-height:280px;text-align:center}
+.glow-line{height:2px;border-radius:99px;background:var(--lime);opacity:.7;margin:.65rem 0}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+/* features: no cards, text + minimal icons */
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem 2.5rem}
+.feat{transition:transform .2s var(--ease)}
+.feat:hover{transform:translateY(-2px)}
+.fic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;border:1px solid var(--line);background:rgba(197,255,58,.06);margin-bottom:1rem}
+.fic svg{width:20px;height:20px}
+.feat h3{font-size:1.02rem;margin:0 0 .4rem}
+.feat p{color:var(--mut);margin:0;font-size:.94rem;line-height:1.6}
+/* compat: stripped table */
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{padding:1rem .5rem;text-align:start;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;border-bottom:1px solid rgba(255,255,255,.16)}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:rgba(255,255,255,.025)}
+td b{font-weight:650}
+/* install: stripped vertical timeline */
+.steps{list-style:none;margin:0;padding:0;max-width:40rem}
+.steps li{position:relative;padding:0 0 2.4rem 3.4rem;border-inline-start:1px solid var(--line);margin-inline-start:.6rem}
+.steps li:last-child{padding-bottom:0}
+.steps .n{position:absolute;inset-inline-start:-.85rem;top:0;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--bg);border:1px solid var(--lime);color:var(--lime);display:grid;place-items:center;font-size:.72rem;font-weight:750}
+.steps b{font-size:1.06rem;display:block}
+.steps p{color:var(--mut);margin:.35rem 0 0;font-size:.96rem}
+/* faq: minimalist text only */
+.faq{max-width:44rem}
+.faq details{border-bottom:1px solid var(--line);padding:1.15rem 0}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:600;font-size:1rem;list-style:none;display:flex;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{margin-inline-start:auto;color:var(--lime);font-weight:400;font-size:1.2rem;flex:none}
+.faq details p{color:var(--mut);margin:.7rem 0 0;font-size:.95rem;max-width:36rem}
+/* final cta */
+.final{text-align:center;padding:110px 0}
+.final h2{font-size:clamp(2rem,4.5vw,3rem);max-width:34rem;margin:0 auto 1rem}
+.final .sub{margin:0 auto 2.2rem;text-align:center}
+/* footer */
+footer{border-top:1px solid var(--line)}
+.foot{max-width:1120px;margin:0 auto;padding:2.2rem 24px;display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;justify-content:space-between;color:var(--mut);font-size:.88rem}
+.foot nav{display:flex;gap:1.2rem}
+.foot a{color:var(--mut);text-decoration:none}
+.foot a:hover{color:#fff}
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:960px){.hero{grid-template-columns:1fr;padding:70px 0 50px;gap:3.5rem}section.block{padding:70px 0}.fgrid{grid-template-columns:1fr 1fr}.links a.nl{display:none}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){h1{font-size:2.5rem}.fgrid{grid-template-columns:1fr;gap:2rem}select.lang{max-width:128px}.phone{width:205px}.watch{width:155px}.final{padding:70px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip</a>
+<header><nav class="nav" aria-label="Main">
+<a class="logo" href="./" aria-label="Otapo home"><span class="mark">⚡</span>Otapo</a>
+<div class="links">
+<a class="nl" href="#features">Recursos</a>
+<a class="nl" href="#compat">Dispositivos</a>
+<a class="nl" href="#install">Instalação</a>
+<a class="nl" href="#faq">FAQ</a>
+<select class="lang" aria-label="Language" onchange="location.href=this.value"><option value="../">English</option><option value="../fr/">Français</option><option value="../de/">Deutsch</option><option value="../es/">Español</option><option value="../it/">Italiano</option><option value="./" selected>Português</option><option value="../nl/">Nederlands</option><option value="../pl/">Polski</option><option value="../ja/">日本語</option><option value="../ko/">한국어</option><option value="../zh/">简体中文</option><option value="../ar/">العربية</option><option value="../ru/">Русский</option><option value="../hi/">हिन्दी</option><option value="../tr/">Türkçe</option><option value="../uk/">Українська</option></select>
+<a class="btn btn-primary btn-sm" href="https://github.com/asphalt123/otapo" rel="noopener">Baixar</a>
+</div></nav></header>
+<main id="main" class="wrap">
+<div class="hero">
+<div>
+<span class="badge"><i></i>Código aberto · Sem nuvem · v0.1.0</span>
+<h1 style="margin-top:1.2rem">Sua casa, <span class="lime">no seu pulso.</span></h1>
+<p class="lead">Otapo controla suas tomadas e lâmpadas TP-Link Tapo na rede local — pelo celular e pelo relógio. Sem nuvem. Sem rastreio. Só controle instantâneo.</p>
+<div class="cta">
+<a class="btn btn-primary" href="https://github.com/asphalt123/otapo" rel="noopener">Baixar para Android</a>
+<a class="btn btn-secondary" href="https://github.com/asphalt123/otapo" rel="noopener">Ver no GitHub</a>
+</div>
+<p class="micro">Grátis · Código aberto · Funciona no Wi-Fi</p>
+</div>
+<div class="mock" aria-hidden="true">
+<div class="mock-glow"></div>
+<div class="phone"><div class="screen">
+<div class="notch"></div>
+<div class="srow"><span class="dot"></span>P100 <span class="tgl">ON</span></div>
+<div class="srow"><span class="dot"></span>P110 · 42.5W <span class="tgl">ON</span></div>
+<div class="srow"><span class="dot off"></span>L630 <span class="tgl off">OFF</span></div>
+<div class="srow"><span class="dot"></span>L510 · 60% <span class="tgl">ON</span></div>
+<div class="glow-line"></div>
+<div class="srow"><span class="dot"></span>⌚ ✓ synced</div>
+</div></div>
+<div class="watch"><div class="screen">
+<div class="srow"><span class="dot"></span>Living ⏻</div>
+<div class="srow"><span class="dot off"></span>Office ⏻</div>
+<div class="glow-line"></div>
+<div class="srow">⚡ 42W</div>
+</div></div>
+</div>
+</div>
+<section class="block" aria-label="Stats">
+<div class="stats">
+<div class="stat reveal"><b>16+</b><span>idiomas</span></div>
+<div class="stat reveal"><b>100%</b><span>local, sem nuvem</span></div>
+<div class="stat reveal"><b>6+</b><span>dispositivos suportados</span></div>
+<div class="stat reveal"><b>0</b><span>rastreadores, 0 contas</span></div>
+</div>
+</section>
+<section class="block" id="features">
+<p class="eyebrow reveal">Otapo</p>
+<h2 class="reveal">Tudo o que você precisa. Nada além disso.</h2><p class="sub reveal">Controle total dos dispositivos, direto da rede local. Rápido, privado, confiável.</p>
+<div class="fgrid"><div class="feat reveal"><div class="fic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="#c5ff3a" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.5 12l2 2 3.5-3.5" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Privado por design</h3><p>Suas credenciais nunca saem dos seus aparelhos. Login local, armazenamento criptografado.</p></div><div class="feat reveal"><div class="fic"><svg viewBox="0 0 24 24" fill="none"><rect x="7" y="3" width="10" height="18" rx="3" stroke="#c5ff3a" stroke-width="1.7"/><circle cx="12" cy="17.5" r="1.1" fill="#c5ff3a"/><path d="M10.5 7h3" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>Relógio em primeiro lugar</h3><p>Acenda pelo mostrador, bloco ou ajustes rápidos. Celular e relógio sempre sincronizados.</p></div><div class="feat reveal"><div class="fic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12l1-8z" stroke="#c5ff3a" stroke-width="1.7" stroke-linejoin="round"/></svg></div><h3>Energia sob controle</h3><p>Potência ao vivo e consumo diário e mensal do P110. Saiba o que você consome.</p></div><div class="feat reveal"><div class="fic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#c5ff3a" stroke-width="1.7"/><path d="M12 7.5V12l3 2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div><h3>Timers e agendas</h3><p>Contagens e agendas semanais que simplesmente funcionam. Sem nuvem.</p></div><div class="feat reveal"><div class="fic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-6.5-5-6.5-10a6.5 6.5 0 0113 0c0 5-6.5 10-6.5 10z" stroke="#c5ff3a" stroke-width="1.7"/><circle cx="12" cy="10" r="2.3" stroke="#fff" stroke-width="1.6"/></svg></div><h3>Grupos e lugares</h3><p>Agrupe por cômodo. Ligue ao chegar e desligue ao sair, automaticamente.</p></div><div class="feat reveal"><div class="fic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9.5a6 6 0 0112 0c0 4.5 1.8 5.5 1.8 5.5H4.2S6 14 6 9.5z" stroke="#c5ff3a" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 18.5a2 2 0 004 0" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div><h3>Sempre informado</h3><p>Alertas se um dispositivo ficar offline ou mudar de estado. Backups criptografados incluídos.</p></div></div>
+</section>
+<section class="block" id="compat">
+<p class="eyebrow reveal">Dispositivos</p>
+<h2 class="reveal">Funciona com seu Tapo</h2><p class="sub reveal">Testado nas tomadas e lâmpadas mais populares. Outros modelos com suporte parcial.</p>
+<div class="reveal" style="overflow-x:auto"><table>
+<thead><tr><th>Dispositivo</th><th>Tipo</th><th>Lig. · Desl.</th><th>Brilho</th><th>Cor</th><th>Energia</th></tr></thead>
+<tbody>
+<tr><td><b>P100</b></td><td>Tomada</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><b>P110</b></td><td>Tomada</td><td>✓</td><td>—</td><td>—</td><td>✓</td></tr>
+<tr><td><b>L510</b></td><td>Lâmpada dimerizável</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><b>L520</b></td><td>Lâmpada dimerizável</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><b>L610</b></td><td>Spot dimerizável</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><b>L630</b></td><td>Spot colorido</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+</tbody></table></div>
+</section>
+<section class="block" id="install">
+<p class="eyebrow reveal">Instalação</p>
+<h2 class="reveal">Pronto em dois minutos</h2><p class="sub reveal">Três passos do download ao primeiro toque.</p>
+<ol class="steps">
+<li class="reveal"><span class="n">01</span><b>Permita o acesso local</b><p>No app Tapo: Perfil → Configurações → Compatibilidade com dispositivos de terceiros.</p></li>
+<li class="reveal"><span class="n">02</span><b>Instale e entre</b><p>Instale o Otapo no celular e no relógio, e entre. Tudo fica local.</p></li>
+<li class="reveal"><span class="n">03</span><b>Escaneie e controle</b><p>Mesmo Wi-Fi, escaneie a rede e controle. Adicione grupos, widgets e timers.</p></li>
+</ol>
+</section>
+<section class="block" id="faq">
+<p class="eyebrow reveal">FAQ</p>
+<h2 class="reveal">Perguntas respondidas</h2><p class="sub reveal">O essencial, em palavras simples.</p>
+<div class="faq reveal">
+<details><summary>O Otapo precisa da nuvem?<span class="pm">+</span></summary><p>Não. Tudo passa pelo seu Wi-Fi. A internet serve uma única vez, para o token de acesso.</p></details>
+<details><summary>Por que ativar a “compatibilidade com terceiros”?<span class="pm">+</span></summary><p>Firmwares recentes bloqueiam conexões locais. Uma opção no app oficial as desbloqueia.</p></details>
+<details><summary>Funciona com meu relógio?<span class="pm">+</span></summary><p>Sim — Wear OS 3 ou superior. Instale o mesmo app no celular e no relógio e eles sincronizam.</p></details>
+<details><summary>Minha senha está segura?<span class="pm">+</span></summary><p>Sim. Guardada com criptografia no aparelho e enviada só aos seus dispositivos Tapo.</p></details>
+<details><summary>Quais modelos são suportados?<span class="pm">+</span></summary><p>P100, P110 (com energia), L510, L520, L610 (dimerizáveis) e L630 (colorida). Outros com suporte parcial.</p></details>
+</div>
+</section>
+<section class="block final">
+<h2 class="reveal">Retome o controle da sua casa.</h2>
+<p class="sub reveal">Grátis, aberto e privado. Suas luzes a um toque.</p>
+<a class="btn btn-primary reveal" href="https://github.com/asphalt123/otapo" rel="noopener">Obter Otapo no GitHub</a>
+</section>
+</main>
+<footer><div class="foot"><span><b style="color:var(--tx)">Otapo</b> — Controle local para TP-Link Tapo. Sem nuvem, sem rastreio.</span><nav><a href="https://github.com/asphalt123/otapo" rel="noopener">GitHub</a><a href="#features">Recursos</a><a href="#faq">FAQ</a></nav><span>© 2026 Otapo · Licença MIT.</span></div></footer>
+<script>(function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function reveal(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)||rm){els.forEach(function(e){e.classList.add('visible')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});els.forEach(function(e){io.observe(e)})}
+document.addEventListener('DOMContentLoaded',function(){reveal();var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear()})})();</script>
+</body>
+</html>
