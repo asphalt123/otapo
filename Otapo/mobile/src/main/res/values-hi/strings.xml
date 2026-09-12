@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Otapo</string>
+    <string name="login_title">Tapo साइन इन</string>
+    <string name="login_subtitle">अपने प्लग को स्थानीय रूप से नियंत्रित करें, क्लाउड की आवश्यकता नहीं</string>
+    <string name="login_hint">आपके क्रेडेंशियल केवल स्थानीय साइन-इन (KLAP) के लिए उपयोग किए जाते हैं और आपकी घड़ी के साथ सिंक होते हैं।</string>
+    <string name="login_email">ईमेल</string>
+    <string name="login_password">पासवर्ड</string>
+    <string name="login_button">साइन इन</string>
+    <string name="device_list_title">मेरे डिवाइस</string>
+    <string name="device_list_subtitle">KLAP द्वारा स्थानीय नियंत्रण</string>
+    <string name="no_devices">कोई डिवाइस नहीं मिला।\nसुनिश्चित करें कि आपका फ़ोन प्लग वाले Wi-Fi नेटवर्क पर है।</string>
+    <string name="refresh">रिफ़्रेश</string>
+    <string name="logout">साइन आउट</string>
+    <string name="add_by_ip">IP द्वारा जोड़ें</string>
+    <string name="add_device_title">डिवाइस जोड़ें</string>
+    <string name="add_device_hint">अपने Tapo प्लग/लाइट का स्थानीय IP पता दर्ज करें। आप इसे आधिकारिक Tapo ऐप में पा सकते हैं: डिवाइस → गियर आइकन।</string>
+    <string name="add_device_ip_hint">IP पता (जैसे 192.168.1.140)</string>
+    <string name="add_device_button">जोड़ें</string>
+    <string name="compatibility_disclaimer">⚠️ ऐप के काम करने के लिए, आधिकारिक Tapo ऐप में "थर्ड-पार्टी डिवाइस संगतता" सक्षम करें (प्रोफ़ाइल → सेटिंग)। इसके बिना, नए प्लग स्थानीय कनेक्शन अस्वीकार कर देते हैं।</string>
+    <string name="error_generic">एक त्रुटि हुई: %1$s</string>
+    <string name="state_on">चालू</string>
+    <string name="state_off">बंद</string>
+    <string name="state_offline">ऑफ़लाइन</string>
+    <string name="powering">भेजा जा रहा है…</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="save">सहेजें</string>
+    <string name="delete">हटाएं</string>
+    <string name="close">बंद करें</string>
+    <!-- Widgets -->
+    <string name="widget_label">OpenTapo प्लग</string>
+    <string name="widget_desc">ऐप खोले बिना Tapo प्लग चालू/बंद करें</string>
+    <string name="widget_turn_on">चालू करें</string>
+    <string name="widget_turn_off">बंद करें</string>
+    <string name="widget_no_device">अज्ञात प्लग</string>
+    <string name="widget_configure">प्लग चुनें</string>
+    <string name="widget_config_title">विजेट प्लग चुनें</string>
+    <string name="widget_config_empty">कोई डिवाइस नहीं: पहले ऐप खोलें और स्कैन चलाएं।</string>
+    <!-- Generic picker -->
+    <string name="picker_title_default">डिवाइस चुनें</string>
+    <string name="picker_none">कोई नहीं</string>
+    <!-- Quick Settings Tile -->
+    <string name="tile_label">OpenTapo</string>
+    <string name="tile_no_favorite">कोई पसंदीदा प्लग नहीं — चुनने के लिए टैप करें</string>
+    <string name="tile_pick_title">पसंदीदा प्लग चुनें</string>
+    <string name="tile_settings_title">त्वरित एक्सेस टाइल</string>
+    <string name="tile_settings_hint">इस प्लग को सूचना पैनल (OpenTapo टाइल) से नियंत्रित किया जाएगा। त्वरित-पैनल संपादन बटन से टाइल जोड़ें।</string>
+    <string name="tile_current">पसंदीदा: %1$s (%2$s)</string>
+    <string name="tile_clear">पसंदीदा हटाएं</string>
+    <string name="menu_tile">त्वरित टाइल</string>
+    <!-- Notifications -->
+    <string name="notif_channel_timers">टाइमर</string>
+    <string name="notif_channel_monitor">डिवाइस निगरानी</string>
+    <string name="notif_channel_persistent">स्थायी स्थिति</string>
+    <!-- Timers -->
+    <string name="menu_timers">टाइमर</string>
+    <string name="timer_pick_device">डिवाइस चुनें</string>
+    <string name="timer_device_label">लक्षित डिवाइस</string>
+    <string name="timer_no_device">कोई डिवाइस चयनित नहीं</string>
+    <string name="timer_need_device">पहले डिवाइस चुनें</string>
+    <string name="timer_countdown_title">X मिनट में बंद / चालू करें</string>
+    <string name="timer_minutes_hint">मिनट (जैसे 30)</string>
+    <string name="timer_target_on">चालू करें (अन्यथा बंद करें)</string>
+    <string name="timer_start">टाइमर शुरू करें</string>
+    <string name="timer_bad_minutes">1 से 10080 मिनट दर्ज करें</string>
+    <string name="timer_started">टाइमर शुरू हुआ (%1$d मिनट)</string>
+    <string name="timer_none">कोई सक्रिय टाइमर नहीं।</string>
+    <string name="timer_row">%1$s → %2$s (%3$s में)</string>
+    <string name="timer_row_firing">%1$s → चल रहा है…</string>
+    <string name="timer_remaining_hm">%1$d घं %2$d मि</string>
+    <string name="timer_remaining_m">%1$d मिनट</string>
+    <string name="timer_expired_title">टाइमर: %1$s</string>
+    <string name="timer_expired_text">%1$s अब %2$s है।</string>
+    <string name="timer_failed_text">%1$s को नियंत्रित नहीं किया जा सका (ऑफ़लाइन?)। टाइमर समाप्त हो गया है।</string>
+    <string name="timer_exact_hint">सटीक-समय ट्रिगर के लिए, OpenTapo के लिए सटीक अलार्म की अनुमति दें।</string>
+    <string name="timer_exact_grant">सटीक अलार्म की अनुमति दें</string>
+    <string name="schedule_title">आवर्ती शेड्यूल</string>
+    <string name="schedule_add">शेड्यूल जोड़ें</string>
+    <string name="schedule_added">शेड्यूल जोड़ा गया</string>
+    <string name="schedule_none">कोई निर्धारित शेड्यूल नहीं।</string>
+    <string name="schedule_every_day">हर दिन</string>
+    <string name="schedule_days_hint">कोई दिन नहीं = हर दिन। जैसे: हर दिन रात 11 बजे बंद करें।</string>
+    <string name="schedule_row">%1$s → %2$s, %3$s पर (%4$s)</string>
+    <string name="schedule_fired_title">शेड्यूल: %1$s</string>
+    <string name="day_mon">सोम</string>
+    <string name="day_tue">मंगल</string>
+    <string name="day_wed">बुध</string>
+    <string name="day_thu">गुरु</string>
+    <string name="day_fri">शुक्र</string>
+    <string name="day_sat">शनि</string>
+    <string name="day_sun">रवि</string>
+    <!-- Device control -->
+    <string name="control_power">पावर</string>
+    <string name="control_brightness_value">ब्राइटनेस: %1$d %%</string>
+    <string name="control_color_title">रंग</string>
+    <string name="control_color_hint">चुनने के लिए पहिये को स्पर्श करें, भेजने के लिए छोड़ें।</string>
+    <string name="control_color_value">रंग: ह्यू %1$d, सैचुरेशन %2$d</string>
+    <string name="control_temp_value">सफ़ेद: %1$d K</string>
+    <string name="menu_energy">ऊर्जा</string>
+    <!-- Energy -->
+    <string name="energy_subtitle">P110 मॉनिटर — हर 10 सेकंड में रीडिंग</string>
+    <string name="energy_power">%.1f W</string>
+    <string name="energy_today">आज: %.3f kWh</string>
+    <string name="energy_month">माह: %.2f kWh</string>
+    <string name="energy_unavailable">मीटर अनुपलब्ध</string>
+    <string name="energy_no_data">अभी तक कोई माप नहीं</string>
+    <!-- Offline monitoring -->
+    <string name="menu_monitor">निगरानी</string>
+    <string name="monitor_hint">प्रत्येक प्लग की स्थानीय रूप से (KLAP) समय-समय पर जांच करता है और यदि वह पहुंच से बाहर हो जाए, वापस ऑनलाइन आए या ऐप के बाहर स्थिति बदले तो आपको सचेत करता है।</string>
+    <string name="monitor_enabled">निगरानी सक्षम करें</string>
+    <string name="monitor_persistent">स्थायी सूचना (चालू प्लग)</string>
+    <string name="monitor_interval_title">जांच आवृत्ति (मिनट)</string>
+    <string name="monitor_interval_value">हर %1$d मिनट में जांचें</string>
+    <string name="monitor_check_now">अभी जांचें</string>
+    <string name="monitor_checking">जांच हो रही है…</string>
+    <string name="monitor_offline_title">ऑफ़लाइन: %1$s</string>
+    <string name="monitor_offline_text">%1$s अब स्थानीय रूप से प्रतिक्रिया नहीं दे रहा है। इसकी पावर और अपना Wi-Fi जांचें।</string>
+    <string name="monitor_back_title">वापस: %1$s</string>
+    <string name="monitor_back_text">%1$s फिर से स्थानीय रूप से प्रतिक्रिया दे रहा है।</string>
+    <string name="monitor_changed_title">अप्रत्याशित बदलाव: %1$s</string>
+    <string name="monitor_changed_text">%1$s अब %2$s है (ऐप के बाहर बदला गया)।</string>
+    <string name="monitor_persistent_title">OpenTapo</string>
+    <string name="monitor_persistent_text">%1$d/%2$d चालू • %3$d ऑफ़लाइन</string>
+    <!-- Groups -->
+    <string name="menu_groups">समूह</string>
+    <string name="group_list_hint">लॉन्ग प्रेस = सभी चालू/बंद। ड्रैग = पुनः क्रम। स्वाइप = हटाएं। टैप = संपादित करें।</string>
+    <string name="group_none">कोई समूह नहीं — नीचे अपना पहला समूह बनाएं।</string>
+    <string name="group_members">%1$d प्लग</string>
+    <string name="group_summary">%1$d/%2$d चालू</string>
+    <string name="group_card_hint">लॉन्ग: सभी चालू/बंद • टैप: संपादित करें</string>
+    <string name="group_drag_hint">पुनः क्रमबद्ध करें</string>
+    <string name="group_create_title">समूह बनाएं</string>
+    <string name="group_name_hint">समूह का नाम (जैसे लिविंग रूम)</string>
+    <string name="group_name_empty">समूह को नाम दें</string>
+    <string name="group_name_exists">इस नाम का समूह पहले से मौजूद है</string>
+    <string name="group_deleted">समूह %1$s हटाया गया</string>
+    <string name="group_empty">इस समूह में कोई ज्ञात प्लग नहीं है</string>
+    <string name="group_applying">समूह कमांड %1$s…</string>
+    <string name="group_applied">%1$s: %2$d/%3$d प्लग ठीक</string>
+    <string name="group_edit_title">समूह संपादित करें</string>
+    <string name="group_members_hint">पुनः क्रम के लिए ड्रैग करें, हटाने के लिए स्वाइप करें या कचरा टैप करें।</string>
+    <string name="group_add_device">प्लग जोड़ें</string>
+    <string name="group_no_more_devices">सभी ज्ञात प्लग पहले से समूह में हैं</string>
+    <string name="group_saved">समूह %1$s सहेजा गया</string>
+    <string name="group_delete_title">%1$s हटाएं?</string>
+    <!-- Geofencing -->
+    <string name="menu_geofence">GPS क्षेत्र</string>
+    <string name="geofence_hint">क्षेत्र में प्रवेश पर प्लग चालू करें, बाहर निकलने पर बंद करें। त्रिज्या और क्रियाएं प्रति क्षेत्र सेट होती हैं।</string>
+    <string name="geofence_label_hint">क्षेत्र का नाम (जैसे घर)</string>
+    <string name="geofence_lat_hint">अक्षांश (जैसे 48.85)</string>
+    <string name="geofence_lng_hint">देशांतर (जैसे 2.35)</string>
+    <string name="geofence_here">मेरा स्थान उपयोग करें</string>
+    <string name="geofence_radius_value">त्रिज्या: %1$d मी</string>
+    <string name="geofence_no_device">कोई प्लग चयनित नहीं</string>
+    <string name="geofence_pick_devices">प्लग चुनें</string>
+    <string name="geofence_on_enter">प्रवेश पर</string>
+    <string name="geofence_on_exit">निकास पर</string>
+    <string name="geofence_action_on">चालू करें</string>
+    <string name="geofence_action_off">बंद करें</string>
+    <string name="geofence_action_none">कुछ नहीं</string>
+    <string name="geofence_save">क्षेत्र जोड़ें</string>
+    <string name="geofence_none">कोई क्षेत्र परिभाषित नहीं।</string>
+    <string name="geofence_added">क्षेत्र %1$s जोड़ा गया</string>
+    <string name="geofence_need_label">क्षेत्र को नाम दें</string>
+    <string name="geofence_need_coords">अमान्य निर्देशांक (अक्षांश −90…90, देशांतर −180…180)</string>
+    <string name="geofence_need_location">GPS क्षेत्र उपयोग करने के लिए स्थान की अनुमति दें</string>
+    <string name="geofence_no_fix">स्थान अनुपलब्ध — GPS चालू करके बाहर से पुनः प्रयास करें</string>
+    <string name="geofence_fix_ok">स्थान भरा गया</string>
+    <string name="geofence_enter_title">स्वागत: %1$s</string>
+    <string name="geofence_exit_title">प्रस्थान: %1$s</string>
+    <string name="geofence_applied">%1$s: %2$d/%3$d प्लग %4$s</string>
+    <!-- Multi-account -->
+    <string name="menu_accounts">खाते</string>
+    <string name="account_hint">अपने Tapo खातों (घर, कार्य…) के बीच स्विच करें। सक्रिय खाता ऐप और घड़ी चलाता है; प्रत्येक खाता अपना डिवाइस नेटवर्क रखता है।</string>
+    <string name="account_none">कोई खाता नहीं — पहले साइन इन करें।</string>
+    <string name="account_add_title">खाता जोड़ें</string>
+    <string name="account_label_hint">नाम (जैसे कार्य)</string>
+    <string name="account_need_all">नाम, ईमेल और पासवर्ड भरें</string>
+    <string name="account_added">खाता %1$s जोड़ा गया</string>
+    <string name="account_switched">सक्रिय खाता: %1$s — पुनः स्कैन हो रहा है…</string>
+    <string name="account_deleted">खाता %1$s हटाया गया</string>
+    <string name="account_delete_title">%1$s हटाएं?</string>
+    <string name="account_delete_hint">इस खाते के डिवाइस इस फ़ोन से भुला दिए जाएंगे।</string>
+    <!-- Voice shortcuts -->
+    <string name="menu_voice">ध्वनि सहायक</string>
+    <string name="voice_intro">अपने प्लग को आवाज़ से या OpenTapo आइकन पर लॉन्ग प्रेस से नियंत्रित करें। आज़माएं:</string>
+    <string name="voice_examples">• “Ok Google, turn on the living room plug with OpenTapo”\n• “Ok Google, turn off the office plug with OpenTapo”\n• OpenTapo आइकन पर लॉन्ग प्रेस → टॉगल करने के लिए प्लग टैप करें\n• डीप लिंक: opentapo://toggle?device=LivingRoom&amp;state=on</string>
+    <string name="voice_publish">प्लग शॉर्टकट प्रकाशित करें</string>
+    <string name="voice_published">शॉर्टकट लॉन्चर में प्रकाशित हुए</string>
+    <string name="voice_no_match">कोई प्लग पहचाना नहीं गया — सूची में दिखे नाम से बोलें</string>
+    <string name="voice_all_result">%1$d/%2$d प्लग नियंत्रित</string>
+    <string name="voice_all_on">सभी चालू करें</string>
+    <string name="voice_all_off">सभी बंद करें</string>
+    <string name="voice_shortcut_long">%1$s — %2$s पर स्विच करें</string>
+    <!-- Backup/Restore -->
+    <string name="menu_backup">बैकअप</string>
+    <string name="backup_hint">डिवाइस, समूह, GPS क्षेत्र, टाइमर और खाते (पासवर्ड आपके पासफ़्रेज़ से एन्क्रिप्टेड) JSON फ़ाइल में निर्यात करें। साझा करने के लिए: फ़ाइल + पासफ़्रेज़ दो अलग चैनलों से भेजें।</string>
+    <string name="backup_passphrase_hint">पासफ़्रेज़ (कम से कम 4 अक्षर)</string>
+    <string name="backup_need_passphrase">कम से कम 4 अक्षरों का पासफ़्रेज़ चुनें</string>
+    <string name="backup_export">फ़ाइल में निर्यात करें</string>
+    <string name="backup_import">फ़ाइल से पुनर्स्थापित करें</string>
+    <string name="backup_share">अंतिम निर्यात साझा करें</string>
+    <string name="backup_share_subject">OpenTapo बैकअप</string>
+    <string name="backup_export_first">पहले बैकअप निर्यात करें</string>
+    <string name="backup_exported">बैकअप निर्यात हुआ</string>
+    <string name="backup_imported">बैकअप पुनर्स्थापित (%1$d खाते) — पुनः स्कैन हो रहा है…</string>
+</resources>

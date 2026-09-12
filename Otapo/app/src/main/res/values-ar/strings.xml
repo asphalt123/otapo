@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Otapo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="main_activity_title">أجهزة Tapo</string>
+    <string name="main_activity_devices">الأجهزة</string>
+    <string name="main_activity_groups">مجموعات الأجهزة</string>
+    <string name="main_activity_loading">جارٍ البحث عن أجهزة Tapo…</string>
+    <string name="main_activity_not_found">تعذّر العثور على أي جهاز Tapo</string>
+    <string name="main_activity_no_network">تعذّر الاتصال بشبكة WiFi المحلية</string>
+    <string name="main_activity_reload_devices">إعادة تحميل قائمة الأجهزة</string>
+    <string name="main_activity_setup_new_device">إضافة جهاز جديد</string>
+    <string name="main_activity_new_group">إنشاء مجموعة جديدة</string>
+    <string name="main_activity_del_group">إزالة المجموعات المحددة</string>
+    <string name="login_activity_title">تسجيل الدخول</string>
+    <string name="login_activity_email">عنوان البريد الإلكتروني</string>
+    <string name="login_activity_email_input">أدخل البريد الإلكتروني</string>
+    <string name="login_activity_password">كلمة المرور</string>
+    <string name="login_activity_password_input">أدخل كلمة المرور</string>
+    <string name="login_activity_save_password">حفظ كلمة المرور</string>
+    <string name="login_activity_submit">تسجيل الدخول</string>
+    <string name="login_activity_submit_loading">جارٍ تسجيل الدخول…</string>
+    <string name="activity_login_signin_error">اسم المستخدم أو كلمة المرور غير صالحين</string>
+    <string name="activity_login_input_field_empty">يجب تقديم بيانات اعتماد صالحة</string>
+    <string name="device_activity_power">الطاقة: %s</string>
+    <string name="device_activity_power_on">تشغيل</string>
+    <string name="device_activity_power_off">إيقاف</string>
+    <string name="device_activity_brightness">السطوع: %d%%</string>
+    <string name="device_activity_color">اللون: %s</string>
+    <string name="device_activity_wait">يرجى الانتظار…</string>
+    <string name="activity_main_not_found">لم يتم العثور على أي جهاز</string>
+    <string name="defines_the_brightness_value_for_seek_bar">يحدد قيمة السطوع لشريط التمرير</string>
+    <string name="new_group_activity_title">إنشاء مجموعة جديدة لـ %d من الأجهزة</string>
+    <string name="new_group_activity_group_name">أدخل اسم المجموعة</string>
+    <string name="new_group_activity_group_name_placeholder">غرفة المعيشة</string>
+    <string name="new_group_activity_group_name_error_empty_name">لا يمكن أن يكون اسم المجموعة فارغا</string>
+    <string name="new_group_activity_group_name_error_duped">توجد مجموعة بهذا الاسم مسبقا</string>
+    <string name="device_setup_activity_title">إضافة جهاز جديد</string>
+    <string name="device_setup_activity_device_address">أدخل عنوان IP للجهاز</string>
+    <string name="device_setup_activity_device_address_hint">192.168.178.32</string>
+    <string name="device_setup_activity_error_bad_address">لقد أدخلت عنوانا غير صالح</string>
+    <string name="device_setup_activity_error_unreachable">المضيف المقدم لا يمكن الوصول إليه</string>
+    <string name="device_setup_activity_error_handhshake_failed">تعذّر إعداد المضيف كجهاز Tapo</string>
+    <string name="device_setup_activity_loading_reachable">جارٍ الاتصال بالمضيف المقدم</string>
+    <string name="device_setup_activity_loading_setup">جارٍ إعداد الجهاز</string>
+    <string name="device_setup_activity_disclaimer">يتطلب تفعيل "توافق الجهات الخارجية" في تطبيق Tapo الرسمي (الملف الشخصي → الإعدادات). بدون ذلك، ترفض الأجهزة الاتصالات المحلية.</string>
+    <string name="complication_config_title">المضاعفة: أي قابس؟</string>
+    <string name="complication_config_hint">تعرض المضاعفة حالة هذا القابس على وجه الساعة. انقر على المضاعفة لتشغيله / إيقافه.</string>
+    <string name="complication_no_device">لا توجد قوابس معروفة — افتح OpenTapo وقم بالفحص أولا.</string>
+</resources>

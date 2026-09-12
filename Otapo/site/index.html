@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otapo — Local Control for Your Tapo Smart Home</title>
+<meta name="description" content="Otapo is a free, open-source Android + Wear OS app to control Tapo plugs and bulbs locally via KLAP. No cloud. No telemetry. 16 languages.">
+<link rel="canonical" href="https://asphalt123.github.io/otapo/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Otapo">
+<meta property="og:title" content="Otapo — Local Control for Your Tapo Smart Home">
+<meta property="og:description" content="Control Tapo plugs & bulbs over your LAN via KLAP. No cloud, no telemetry. Android + Wear OS. Free & open source.">
+<meta property="og:url" content="https://asphalt123.github.io/otapo/">
+<meta property="og:image" content="https://asphalt123.github.io/otapo/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Otapo — Local Control for Your Tapo Smart Home">
+<meta name="twitter:description" content="Free, open-source Android + Wear OS app. Local KLAP control. Zero cloud. Zero telemetry.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300e5ff'/%3E%3Cpath d='M17.5 6 9 18h6l-1 8 8.5-12h-6l1-8z' fill='%23000'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#000000;
+  --s1:#0a0a0a;
+  --s2:#111111;
+  --border:rgba(255,255,255,0.05);
+  --border-strong:rgba(255,255,255,0.09);
+  --cyan:#00e5ff;
+  --cyan-dim:rgba(0,229,255,0.12);
+  --cyan-glow:rgba(0,229,255,0.45);
+  --text:#f5f7fa;
+  --muted:#8b8f98;
+  --muted2:#5c6068;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --nav-h:60px;
+  --r:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  line-height:1.5;
+}
+::selection{background:rgba(0,229,255,.25);color:#fff}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+/* ---------- backdrop grain + glows ---------- */
+.bg-stage{position:fixed;inset:0;z-index:-2;background:#000;overflow:hidden;pointer-events:none}
+.bg-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,black 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,black 20%,transparent 75%);
+}
+.bg-glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5}
+.bg-glow.g1{width:720px;height:420px;left:50%;top:-180px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(0,229,255,.22),transparent)}
+.bg-glow.g2{width:520px;height:520px;left:-180px;top:38%;background:radial-gradient(closest-side,rgba(0,229,255,.07),transparent)}
+.bg-glow.g3{width:520px;height:520px;right:-180px;top:62%;background:radial-gradient(closest-side,rgba(0,229,255,.06),transparent)}
+.bg-beam{position:absolute;top:-10%;left:50%;width:1px;height:60%;background:linear-gradient(to bottom,transparent,rgba(0,229,255,.5),transparent);filter:blur(.5px);opacity:.6}
+.bg-beam.b1{transform:translateX(-220px) rotate(12deg)}
+.bg-beam.b2{transform:translateX(220px) rotate(-12deg)}
+.noise{position:absolute;inset:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* ---------- nav ---------- */
+.nav-wrap{position:fixed;top:16px;left:0;right:0;z-index:100;display:flex;justify-content:center;padding:0 16px}
+.nav{
+  display:flex;align-items:center;gap:6px;
+  height:var(--nav-h);padding:0 8px 0 16px;
+  background:rgba(10,10,10,.72);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--border-strong);
+  border-radius:100px;
+  box-shadow:0 8px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);
+  max-width:860px;width:100%;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:17px;margin-right:8px}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:var(--cyan);display:grid;place-items:center;box-shadow:0 0 20px rgba(0,229,255,.5),0 0 60px rgba(0,229,255,.2);flex-shrink:0}
+.brand-mark svg{width:17px;height:17px}
+.nav-links{display:flex;align-items:center;gap:2px;margin:0 auto}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--muted);padding:8px 14px;border-radius:100px;transition:.25s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.gh-badge{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:#c8ccd2;border:1px solid var(--border-strong);border-radius:100px;padding:7px 12px;background:rgba(255,255,255,.03);white-space:nowrap;transition:.25s}
+.gh-badge:hover{border-color:rgba(0,229,255,.4);color:#fff}
+.gh-badge svg{width:14px;height:14px;fill:#fff}
+.gh-badge .star{color:var(--cyan)}
+.lang-select{font-family:var(--mono);font-size:12px;font-weight:500;color:#c8ccd2;background-color:rgba(255,255,255,.03);border:1px solid var(--border-strong);border-radius:100px;padding:7px 28px 7px 12px;white-space:nowrap;transition:.25s;cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b8f98' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;flex-shrink:0;margin-left:4px}
+.lang-select:hover{border-color:rgba(0,229,255,.4);color:#fff}
+.lang-select option{background:#111;color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;border-radius:100px;padding:0 20px;height:42px;border:0;cursor:pointer;transition:transform .2s,box-shadow .25s,background .25s;white-space:nowrap}
+.btn-cyan{background:var(--cyan);color:#00181c;box-shadow:0 0 0 1px rgba(0,229,255,.4),0 0 24px rgba(0,229,255,.35),0 8px 32px rgba(0,229,255,.25)}
+.btn-cyan:hover{box-shadow:0 0 0 1px rgba(0,229,255,.7),0 0 40px rgba(0,229,255,.55),0 8px 40px rgba(0,229,255,.35);background:#4df0ff}
+.btn-ghost{background:rgba(255,255,255,.04);color:#fff;border:1px solid var(--border-strong);backdrop-filter:blur(12px)}
+.btn-ghost:hover{border-color:rgba(0,229,255,.45);background:rgba(0,229,255,.06)}
+.nav .btn{height:38px;padding:0 18px;font-size:13.5px}
+.mobile-toggle{display:none;background:none;border:1px solid var(--border-strong);border-radius:10px;color:#fff;width:38px;height:38px;font-size:18px;cursor:pointer}
+/* ---------- layout ---------- */
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+section{position:relative}
+/* ---------- hero ---------- */
+.hero{padding:172px 0 40px;text-align:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
+  color:#d3d7dd;background:rgba(17,17,17,.8);
+  border:1px solid var(--border-strong);border-radius:100px;
+  padding:9px 8px 9px 14px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);position:relative;flex-shrink:0}
+.pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--cyan);opacity:.5;animation:ping 1.8s ease-out infinite}
+@keyframes ping{0%{transform:scale(.5);opacity:.8}100%{transform:scale(1.4);opacity:0}}
+.type-box{display:inline-flex;align-items:center;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.22);border-radius:100px;padding:4px 12px;margin-left:4px;color:var(--cyan);min-width:172px;justify-content:center}
+.caret{display:inline-block;width:8px;height:15px;background:var(--cyan);margin-left:5px;animation:blink 1s steps(1) infinite;vertical-align:-2px}
+@keyframes blink{50%{opacity:0}}
+.hero h1{
+  font-size:clamp(44px,7.2vw,84px);
+  line-height:.98;letter-spacing:-.045em;font-weight:800;
+  margin:28px auto 0;max-width:900px;
+}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .inner{display:block}
+.grad{
+  background:linear-gradient(100deg,#fff 0%,var(--cyan) 38%,#7df4ff 55%,var(--cyan) 72%,#fff 110%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shine 6s linear infinite;
+  filter:drop-shadow(0 0 28px rgba(0,229,255,.35));
+}
+@keyframes shine{to{background-position:200% center}}
+.sub{color:var(--muted);font-size:clamp(16px,2vw,19px);line-height:1.65;max-width:640px;margin:22px auto 0}
+.sub strong{color:#d6dae0;font-weight:600}
+.hero-cta{display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.hero-cta .btn{height:50px;padding:0 28px;font-size:15px}
+.hero-meta{display:flex;gap:26px;justify-content:center;margin-top:34px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted2);letter-spacing:.04em}
+.hero-meta b{color:#dfe3e8;font-weight:600}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.dot{width:3px;height:3px;border-radius:50%;background:#2a2e35}
+/* hero terminal strip */
+.hero-visual{margin:64px auto 0;max-width:1020px;position:relative}
+.window{
+  background:rgba(10,10,10,.82);border:1px solid var(--border-strong);border-radius:18px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.6),0 0 80px rgba(0,229,255,.07);
+  overflow:hidden;text-align:left;
+}
+.window-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--border)}
+.traffic{display:flex;gap:7px}
+.traffic i{width:11px;height:11px;border-radius:50%;display:block}
+.traffic i:nth-child(1){background:#ff5f57}.traffic i:nth-child(2){background:#3a3d44}.traffic i:nth-child(3){background:#3a3d44}
+.window-url{margin:0 auto;font-family:var(--mono);font-size:11.5px;color:var(--muted2);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:5px 14px;border-radius:8px;display:flex;align-items:center;gap:7px}
+.lock{width:10px;height:10px;border-radius:3px;background:var(--cyan);display:inline-block}
+.window-body{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+.phone-mock{padding:32px 28px;border-right:1px solid var(--border);background:radial-gradient(120% 100% at 0% 0%,rgba(0,229,255,.06),transparent 60%)}
+.mock-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.mock-title{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.mock-pill{font-family:var(--mono);font-size:10.5px;color:var(--cyan);background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.25);padding:4px 10px;border-radius:100px}
+.dev-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:14px;padding:13px 14px;margin-bottom:10px;transition:.25s}
+.dev-row:hover{border-color:rgba(0,229,255,.35)}
+.dev-ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex-shrink:0;background:rgba(255,255,255,.05);border:1px solid var(--border)}
+.dev-ico.on{background:rgba(0,229,255,.12);border-color:rgba(0,229,255,.35);box-shadow:0 0 18px rgba(0,229,255,.2)}
+.dev-ico svg{width:18px;height:18px}
+.dev-name{font-size:13.5px;font-weight:600}
+.dev-sub{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.toggle{margin-left:auto;width:42px;height:24px;border-radius:100px;background:rgba(0,229,255,.9);position:relative;flex-shrink:0;box-shadow:0 0 16px rgba(0,229,255,.4)}
+.toggle::after{content:'';position:absolute;top:3px;right:3px;width:18px;height:18px;border-radius:50%;background:#00181c}
+.toggle.off{background:#2a2e35;box-shadow:none}
+.toggle.off::after{left:3px;right:auto;background:#8b8f98}
+.slider{margin-top:16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:14px 16px}
+.slider-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:10px}
+.slider-top b{color:var(--cyan)}
+.track{height:6px;border-radius:100px;background:#22262c;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0;width:68%;border-radius:100px;background:linear-gradient(90deg,rgba(0,229,255,.6),var(--cyan));box-shadow:0 0 16px rgba(0,229,255,.5)}
+.knob{position:absolute;top:50%;left:68%;width:16px;height:16px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(0,229,255,.25),0 0 16px rgba(0,229,255,.6)}
+.term{padding:28px 26px;font-family:var(--mono);font-size:12.5px;line-height:2;background:#050607}
+.term .dim{color:#4a4f57}.term .cy{color:var(--cyan)}.term .wh{color:#e6e9ee}.term .gr{color:#7d838d}
+.term-line{display:flex;gap:8px}
+.cursor-blink{width:8px;height:14px;background:var(--cyan);display:inline-block;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+.glow-line{position:absolute;left:10%;right:10%;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.7;filter:blur(.5px)}
+/* ---------- marquee ---------- */
+.marquee-section{margin:70px 0 10px;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.012)}
+.marquee{display:flex;gap:0;width:max-content;animation:scrollX 28s linear infinite;padding:20px 0}
+.marquee:hover{animation-play-state:paused}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+.mq-set{display:flex;align-items:center;gap:44px;padding-right:44px}
+.mq-item{font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,.72);white-space:nowrap;font-family:var(--mono)}
+.mq-item.accent{color:var(--cyan)}
+.mq-sep{color:rgba(255,255,255,.22);font-size:12px}
+/* ---------- section heads ---------- */
+.sec{padding:96px 0 8px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;display:flex;align-items:center;gap:10px;justify-content:center}
+.kicker::before{content:'';width:24px;height:1px;background:rgba(0,229,255,.5)}
+.sec h2{font-size:clamp(32px,4.4vw,52px);letter-spacing:-.04em;line-height:1.05;font-weight:800;text-align:center;margin:16px auto 0;max-width:720px}
+.sec p.lead{color:var(--muted);text-align:center;max-width:600px;margin:16px auto 0;font-size:16.5px;line-height:1.65}
+/* ---------- 3D showcase ---------- */
+.cards3d{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;perspective:1400px}
+.tilt-card{
+  background:linear-gradient(180deg,#101012,#0a0a0a);
+  border:1px solid var(--border-strong);border-radius:20px;padding:28px 26px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transform-style:preserve-3d;will-change:transform;
+  position:relative;overflow:hidden;text-align:left;
+  box-shadow:0 24px 60px rgba(0,0,0,.5);
+}
+.tilt-card::before{content:'';position:absolute;inset:0;background:radial-gradient(80% 50% at 50% 0%,rgba(0,229,255,.09),transparent 70%);pointer-events:none}
+.tilt-card .num{font-family:var(--mono);font-size:11px;color:var(--muted2);letter-spacing:.15em}
+.tilt-card h3{font-size:19px;letter-spacing:-.02em;margin:10px 0 8px;font-weight:700}
+.tilt-card p{font-size:14px;color:var(--muted);line-height:1.65}
+.mini{margin-top:20px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,.5);padding:16px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#b9bec6;transform:translateZ(36px)}
+.mini .cy{color:var(--cyan)}
+.watch-face{margin:20px auto 0;width:150px;height:150px;border-radius:50%;background:#050607;border:1px solid rgba(0,229,255,.3);box-shadow:0 0 40px rgba(0,229,255,.15),inset 0 0 30px rgba(0,229,255,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateZ(40px)}
+.watch-face b{font-size:22px;letter-spacing:-.02em}
+.watch-face span{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:.12em}
+.scan-bars{margin-top:18px;display:flex;gap:6px;align-items:flex-end;height:56px;transform:translateZ(30px)}
+.scan-bars i{flex:1;border-radius:6px;background:linear-gradient(to top,rgba(0,229,255,.15),rgba(0,229,255,.7));min-height:12px;box-shadow:0 0 12px rgba(0,229,255,.15)}
+/* ---------- features ---------- */
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:54px}
+.feat{
+  background:var(--s1);border:1px solid var(--border);border-radius:var(--r);
+  padding:28px 26px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;
+  backdrop-filter:blur(12px);
+}
+.feat::after{content:'';position:absolute;inset:0;opacity:0;transition:.35s;background:radial-gradient(60% 45% at 50% 0%,rgba(0,229,255,.1),transparent 70%);pointer-events:none}
+.feat:hover{border-color:rgba(0,229,255,.45);box-shadow:0 0 0 1px rgba(0,229,255,.2),0 0 32px rgba(0,229,255,.12),0 20px 50px rgba(0,0,0,.5);transform:translateY(-3px)}
+.feat:hover::after{opacity:1}
+.feat-num{font-family:var(--mono);font-size:12px;color:var(--muted2);letter-spacing:.1em}
+.feat-ico{width:44px;height:44px;border-radius:13px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.22);display:grid;place-items:center;margin:18px 0 16px}
+.feat-ico svg{width:21px;height:21px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:16.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.feat p{font-size:14px;color:var(--muted);line-height:1.65}
+.feat-tag{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--cyan);border:1px solid rgba(0,229,255,.25);background:rgba(0,229,255,.06);padding:4px 10px;border-radius:100px}
+/* ---------- devices ---------- */
+.devices-box{margin-top:52px;background:var(--s1);border:1px solid var(--border-strong);border-radius:20px;overflow:hidden;backdrop-filter:blur(12px)}
+.dev-head{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.dev-head b{font-size:15px;letter-spacing:-.01em}
+.dev-head span{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);text-align:left;padding:14px 26px;border-bottom:1px solid var(--border);font-weight:500}
+td{padding:17px 26px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr{transition:.25s}
+tbody tr:hover{background:rgba(0,229,255,.035)}
+.model{font-weight:700;font-size:15px;display:flex;align-items:center;gap:10px}
+.model i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);display:inline-block;flex-shrink:0}
+.dtype{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.pill{font-family:var(--mono);font-size:11px;padding:4px 11px;border-radius:100px;border:1px solid var(--border-strong);color:#cfd4da;background:rgba(255,255,255,.03);display:inline-block;margin:2px 4px 2px 0;white-space:nowrap}
+.pill.cy{color:var(--cyan);border-color:rgba(0,229,255,.3);background:rgba(0,229,255,.07)}
+.check{color:var(--cyan);font-weight:700}
+/* ---------- faq ---------- */
+.faq{max-width:760px;margin:44px auto 0}
+.qa{background:var(--s1);border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden;transition:border-color .3s}
+.qa.open{border-color:rgba(0,229,255,.35)}
+.qa button{width:100%;background:none;border:0;color:#fff;text-align:left;font-size:15px;font-weight:600;padding:20px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.qa button:hover{color:var(--cyan)}
+.plus{width:28px;height:28px;border-radius:50%;border:1px solid var(--border-strong);display:grid;place-items:center;font-size:16px;font-weight:400;color:var(--muted);flex-shrink:0;transition:.3s}
+.qa.open .plus{transform:rotate(45deg);color:var(--cyan);border-color:rgba(0,229,255,.5)}
+.ans{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.ans-inner{padding:0 22px 22px;color:var(--muted);font-size:14.5px;line-height:1.7}
+.ans-inner code{font-family:var(--mono);font-size:12.5px;color:var(--cyan);background:rgba(0,229,255,.08);padding:2px 7px;border-radius:6px}
+/* ---------- cta band ---------- */
+.band{margin:100px 0 0;border:1px solid rgba(0,229,255,.22);border-radius:24px;background:radial-gradient(100% 140% at 50% 0%,rgba(0,229,255,.12),rgba(10,10,10,.9) 65%);padding:72px 32px;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+.band::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.band h2{font-size:clamp(30px,4.5vw,48px);letter-spacing:-.04em;line-height:1.05;font-weight:800;max-width:640px;margin:0 auto}
+/* ---------- footer ---------- */
+footer{margin-top:90px;border-top:1px solid var(--border);padding:56px 0 36px}
+.fgrid2{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.fbrand p{color:var(--muted);font-size:13.5px;margin:14px 0 18px;max-width:280px;line-height:1.65}
+.fcol h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:16px;font-weight:500}
+.fcol a{display:block;font-size:13.5px;color:var(--muted);padding:5px 0;transition:.2s}
+.fcol a:hover{color:var(--cyan)}
+.mit{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--border);padding:7px 13px;border-radius:100px}
+.mit i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.fbottom{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-family:var(--mono);font-size:11.5px;color:var(--muted2);flex-wrap:wrap;gap:12px}
+/* reveal defaults */
+.rv{opacity:0;transform:translateY(28px)}
+/* responsive */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .gh-badge{display:none}
+  .mobile-toggle{display:block}
+  .nav{justify-content:space-between}
+  .window-body{grid-template-columns:1fr}
+  .phone-mock{border-right:0;border-bottom:1px solid var(--border)}
+  .cards3d{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fgrid2{grid-template-columns:1fr 1fr}
+  th:nth-child(4),td:nth-child(4){display:none}
+}
+@media(max-width:600px){
+  .hero{padding-top:138px}
+  .fgrid{grid-template-columns:1fr}
+  .hero-cta .btn{width:100%}
+  .nav .btn{padding:0 14px}
+  th:nth-child(3),td:nth-child(3){display:none}
+  .sec{padding:72px 0 8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  .marquee{animation:none}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-stage" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow g1"></div>
+  <div class="bg-glow g2"></div>
+  <div class="bg-glow g3"></div>
+  <div class="bg-beam b1"></div>
+  <div class="bg-beam b2"></div>
+  <div class="noise"></div>
+</div>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="Otapo home" data-i18n-aria="nav.homeLabel">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8z" fill="#000"/></svg></span>
+      Otapo
+    </a>
+    <div class="nav-links">
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#devices" data-i18n="nav.devices">Devices</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </div>
+    <a class="gh-badge" href="https://github.com/asphalt123/otapo" target="_blank" rel="noopener" aria-label="GitHub stars" data-i18n-aria="nav.starsLabel">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span class="star">★</span><span id="stars">1.2k</span>
+    </a>
+    <select class="lang-select" id="langSelect" aria-label="Select language">
+      <option value="en" selected>EN</option>
+      <option value="fr">FR</option>
+      <option value="de">DE</option>
+      <option value="es">ES</option>
+      <option value="it">IT</option>
+      <option value="pt">PT</option>
+      <option value="nl">NL</option>
+      <option value="pl">PL</option>
+      <option value="ja">JA</option>
+      <option value="ko">KO</option>
+      <option value="zh">ZH</option>
+      <option value="ar">AR</option>
+      <option value="ru">RU</option>
+      <option value="hi">HI</option>
+      <option value="tr">TR</option>
+      <option value="uk">UK</option>
+    </select>
+    <a href="https://github.com/asphalt123/otapo/releases/latest" target="_blank" rel="noopener" class="btn btn-cyan magnetic" data-i18n="nav.cta">Get the app</a>
+    <button class="mobile-toggle" id="menuBtn" aria-label="Menu" data-i18n-aria="nav.menuLabel">≡</button>
+  </nav>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero wrap">
+  <div class="hero-badge" data-hero>
+    <span class="pulse"></span>
+    <span style="color:#8b8f98" data-i18n="hero.badgePrefix">OTAPO&nbsp;//&nbsp;</span>
+    <span class="type-box"><span id="typewriter">Local Control</span><span class="caret"></span></span>
+  </div>
+  <h1 aria-label="Local control for your Tapo home" data-i18n-aria="hero.ariaTitle">
+    <span class="line"><span class="inner" data-hero data-i18n="hero.titleLine1">Your Tapo home,</span></span>
+    <span class="line"><span class="inner grad" data-hero data-i18n="hero.titleLine2">under local control.</span></span>
+  </h1>
+  <p class="sub" data-hero data-i18n-html="hero.subtitleHtml">Otapo is a <strong>free, open-source</strong> Android + Wear OS app that drives Tapo plugs and bulbs <strong>directly over your LAN via KLAP</strong>. No cloud. No telemetry. Just instant response.</p>
+  <div class="hero-cta" data-hero>
+    <a href="https://github.com/asphalt123/otapo/releases/latest" target="_blank" rel="noopener" class="btn btn-cyan magnetic"><span data-i18n="hero.ctaPrimary">Get the app</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <a href="https://github.com/asphalt123/otapo" target="_blank" rel="noopener" class="btn btn-ghost magnetic">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span data-i18n="hero.ctaSecondary">View on GitHub</span></a>
+  </div>
+  <div class="hero-meta" data-hero>
+    <span data-i18n-html="hero.meta1Html"><b>16</b> LANGUAGES</span><span class="dot"></span>
+    <span data-i18n-html="hero.meta2Html"><b>0</b> EGRESS · <b>0</b> TELEMETRY</span><span class="dot"></span>
+    <span data-i18n-html="hero.meta3Html"><b>100%</b> LOCAL · MIT LICENSE</span>
+  </div>
+
+  <div class="hero-visual" data-hero>
+    <div class="window">
+      <div class="window-bar">
+        <div class="traffic"><i></i><i></i><i></i></div>
+        <div class="window-url"><span class="lock"></span><span data-i18n="hero.urlBar">192.168.1.x — local network · KLAP session</span></div>
+        <div style="width:52px"></div>
+      </div>
+      <div class="window-body">
+        <div class="phone-mock">
+          <div class="mock-row"><span class="mock-title" data-i18n="mock.room">Living Room</span><span class="mock-pill" data-i18n="mock.online">● 6 ONLINE</span></div>
+          <div class="dev-row"><div class="dev-ico on"><svg viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8z"/></svg></div><div><div class="dev-name" data-i18n="mock.dev1name">Desk Plug · P110</div><div class="dev-sub" data-i18n="mock.dev1sub">12.4 W · local · 4 ms</div></div><div class="toggle"></div></div>
+          <div class="dev-row"><div class="dev-ico on"><svg viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></div><div><div class="dev-name" data-i18n="mock.dev2name">Ceiling · L530</div><div class="dev-sub" data-i18n="mock.dev2sub">2700 K · 68% · local</div></div><div class="toggle"></div></div>
+          <div class="dev-row"><div class="dev-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#5c6068" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div><div><div class="dev-name" data-i18n="mock.dev3name">Hallway · L510</div><div class="dev-sub" data-i18n="mock.dev3sub">off · scheduled 22:00</div></div><div class="toggle off"></div></div>
+          <div class="slider"><div class="slider-top"><span data-i18n="mock.brightness">BRIGHTNESS</span><b data-i18n="mock.brightnessVal">68%</b></div><div class="track"><div class="fill"></div><div class="knob"></div></div></div>
+        </div>
+        <div class="term" aria-hidden="true">
+          <div class="dim" data-i18n="term.l1">$ otapo handshake --local</div>
+          <div data-i18n-html="term.l2html"><span class="cy">➜</span> <span class="wh">discover 192.168.1.0/24</span> <span class="gr">… 6 devices</span></div>
+          <div data-i18n-html="term.l3html"><span class="cy">➜</span> <span class="wh">klap auth</span> <span class="cy">P110@.64 ✓</span> <span class="gr">3 ms</span></div>
+          <div data-i18n-html="term.l4html"><span class="cy">➜</span> <span class="wh">set_power on</span> <span class="gr">→ ack 200 · lan-only</span></div>
+          <div class="dim" data-i18n="term.l5">— cloud: unreachable (by design) —</div>
+          <div data-i18n-html="term.l6html"><span class="cy">energy</span> <span class="wh">today 0.31 kWh</span> <span class="gr">· stored on-device</span></div>
+          <div><span class="cursor-blink"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="glow-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE : VISIBLE white/gray -->
+<section class="marquee-section" aria-hidden="true">
+  <div class="marquee" id="marquee">
+    <div class="mq-set">
+      <span class="mq-item accent">LOCAL FIRST</span><span class="mq-sep">◆</span>
+      <span class="mq-item">NO CLOUD</span><span class="mq-sep">◆</span>
+      <span class="mq-item">KLAP PROTOCOL</span><span class="mq-sep">◆</span>
+      <span class="mq-item">ZERO TELEMETRY</span><span class="mq-sep">◆</span>
+      <span class="mq-item accent">WEAR OS</span><span class="mq-sep">◆</span>
+      <span class="mq-item">OPEN SOURCE</span><span class="mq-sep">◆</span>
+      <span class="mq-item">16 LANGUAGES</span><span class="mq-sep">◆</span>
+      <span class="mq-item">0 EGRESS</span><span class="mq-sep">◆</span>
+    </div>
+    <div class="mq-set">
+      <span class="mq-item accent">LOCAL FIRST</span><span class="mq-sep">◆</span>
+      <span class="mq-item">NO CLOUD</span><span class="mq-sep">◆</span>
+      <span class="mq-item">KLAP PROTOCOL</span><span class="mq-sep">◆</span>
+      <span class="mq-item">ZERO TELEMETRY</span><span class="mq-sep">◆</span>
+      <span class="mq-item accent">WEAR OS</span><span class="mq-sep">◆</span>
+      <span class="mq-item">OPEN SOURCE</span><span class="mq-sep">◆</span>
+      <span class="mq-item">16 LANGUAGES</span><span class="mq-sep">◆</span>
+      <span class="mq-item">0 EGRESS</span><span class="mq-sep">◆</span>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE 3D -->
+<section class="sec wrap" id="showcase">
+  <div class="kicker rv" data-i18n="showcase.kicker">Showcase</div>
+  <h2 class="rv" data-i18n-html="showcase.titleHtml">One app. Phone, watch,<br>and the wire between.</h2>
+  <p class="lead rv" data-i18n="showcase.lead">Everything runs on your LAN. Scroll — the interface straightens up as you get closer.</p>
+  <div class="cards3d" id="cards3d">
+    <article class="tilt-card rv">
+      <div class="num" data-i18n="showcase.c1num">01 / PHONE</div>
+      <h3 data-i18n="showcase.c1title">Android, instant.</h3>
+      <p data-i18n="showcase.c1desc">Toggle plugs, dim bulbs, shift color temperature. Every tap is a LAN packet — no round-trip to a distant server.</p>
+      <div class="mini" data-i18n-html="showcase.c1miniHtml"><span class="cy">living-room ›</span> set_brightness 68%<br><span class="cy">bedroom ›</span> set_color 2700K ✓<br><span style="color:#5c6068">rtt 4 ms · offline-capable</span></div>
+    </article>
+    <article class="tilt-card rv">
+      <div class="num" data-i18n="showcase.c2num">02 / WATCH</div>
+      <h3 data-i18n="showcase.c2title">Wear OS on your wrist.</h3>
+      <p data-i18n="showcase.c2desc">Mirrored state with your phone. Kill the living-room lamp from the door without pulling anything out.</p>
+      <div class="watch-face"><span data-i18n="showcase.c2room">LIVING ROOM</span><b data-i18n="showcase.c2state">ON · 68%</b><span data-i18n="showcase.c2sync">● SYNCED</span></div>
+    </article>
+    <article class="tilt-card rv">
+      <div class="num" data-i18n="showcase.c3num">03 / PROTOCOL</div>
+      <h3 data-i18n="showcase.c3title">KLAP, done locally.</h3>
+      <p data-i18n="showcase.c3desc">Discovery, handshake and session encryption happen inside your network. Pull the WAN cable — nothing changes.</p>
+      <div class="scan-bars" aria-hidden="true"><i style="height:30%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:90%"></i><i style="height:55%"></i><i style="height:75%"></i><i style="height:38%"></i><i style="height:100%"></i></div>
+      <div class="mini" data-i18n-html="showcase.c3miniHtml"><span class="cy">scan</span> 192.168.1.0/24 → <span class="cy">6 found</span><br>handshake KLAP ✓ · cloud <span style="color:#5c6068">blocked</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec wrap" id="features">
+  <div class="kicker rv" data-i18n="features.kicker">Features</div>
+  <h2 class="rv" data-i18n-html="features.titleHtml">Everything local.<br>Nothing phoning home.</h2>
+  <p class="lead rv" data-i18n="features.lead">Six capabilities that make Otapo the fastest way to drive Tapo gear — all offline-capable.</p>
+  <div class="fgrid">
+    <article class="feat rv"><div class="feat-num">01</div><div class="feat-ico"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18.5h2"/><path d="M2 12h3M19 12h3M4 8.5C6 10 6 14 4 15.5M20 8.5c-2 1.5-2 5.5 0 7"/></svg></div><h3 data-i18n="features.f1t">Phone ↔ Watch sync</h3><p data-i18n="features.f1d">State mirrors in real time between Android and Wear OS. Toggle on one, both agree in milliseconds.</p><span class="feat-tag" data-i18n="features.f1tag">WEAR OS · TILE</span></article>
+    <article class="feat rv"><div class="feat-num">02</div><div class="feat-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6M11 8v6"/></svg></div><h3 data-i18n="features.f2t">KLAP local scan</h3><p data-i18n="features.f2d">Automatic subnet discovery finds every Tapo device on your LAN and pairs with a local handshake.</p><span class="feat-tag" data-i18n="features.f2tag">LAN ONLY · 192.168.x</span></article>
+    <article class="feat rv"><div class="feat-num">03</div><div class="feat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></div><h3 data-i18n="features.f3t">Brightness &amp; color</h3><p data-i18n="features.f3d">Dim, change temperature and color on supported bulbs with a buttery slider — applied instantly.</p><span class="feat-tag" data-i18n="features.f3tag">L510 → L630</span></article>
+    <article class="feat rv"><div class="feat-num">04</div><div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8z"/></svg></div><h3 data-i18n="features.f4t">P110 energy insights</h3><p data-i18n="features.f4d">Live wattage, daily and historical consumption from the P110 — stored on-device, never uploaded.</p><span class="feat-tag" data-i18n="features.f4tag">kWh · ON-DEVICE</span></article>
+    <article class="feat rv"><div class="feat-num">05</div><div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3 data-i18n="features.f5t">Geofencing</h3><p data-i18n="features.f5d">Arrive home, lights on. Leave, everything off. Boundaries evaluated on your phone — not in a cloud.</p><span class="feat-tag" data-i18n="features.f5tag">ARRIVE / LEAVE</span></article>
+    <article class="feat rv"><div class="feat-num">06</div><div class="feat-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21 20c0-2.8-1.9-5.1-4.5-5.8"/></svg></div><h3 data-i18n="features.f6t">Multi-account + backup</h3><p data-i18n="features.f6d">Multiple Tapo accounts, multiple homes. Export and restore your full setup in one encrypted file.</p><span class="feat-tag" data-i18n="features.f6tag">EXPORT · RESTORE</span></article>
+  </div>
+</section>
+
+<!-- DEVICES -->
+<section class="sec wrap" id="devices">
+  <div class="kicker rv" data-i18n="devices.kicker">Compatibility</div>
+  <h2 class="rv" data-i18n-html="devices.titleHtml">Plays nicely with<br>your Tapo shelf.</h2>
+  <p class="lead rv" data-i18n="devices.lead">Plugs and bulbs speaking KLAP on your LAN. More models land with every release.</p>
+  <div class="devices-box rv">
+    <div class="dev-head"><b><span data-i18n="devices.headTitle">Supported devices</span> <span style="color:#5c6068;font-weight:400" data-i18n="devices.headVerified">— 6 verified</span></b><span data-i18n="devices.headProto">PROTOCOL: KLAP · TRANSPORT: LAN</span></div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th data-i18n="devices.thModel">Model</th><th data-i18n="devices.thType">Type</th><th data-i18n="devices.thCaps">Capabilities</th><th data-i18n="devices.thStatus">Status</th></tr></thead>
+      <tbody>
+        <tr><td><span class="model"><i></i>P100</span></td><td class="dtype" data-i18n="devices.t1type">Smart plug</td><td><span class="pill cy" data-i18n="devices.pillOnOff">ON / OFF</span><span class="pill" data-i18n="devices.pillSchedule">SCHEDULE</span></td><td class="check" data-i18n="devices.supported">✓ Supported</td></tr>
+        <tr><td><span class="model"><i></i>P110</span></td><td class="dtype" data-i18n="devices.t2type">Smart plug + energy</td><td><span class="pill cy" data-i18n="devices.pillOnOff">ON / OFF</span><span class="pill cy" data-i18n="devices.pillEnergy">ENERGY kWh</span><span class="pill" data-i18n="devices.pillSchedule">SCHEDULE</span></td><td class="check" data-i18n="devices.supported">✓ Supported</td></tr>
+        <tr><td><span class="model"><i></i>L510</span></td><td class="dtype" data-i18n="devices.t3type">Dimmable bulb</td><td><span class="pill cy" data-i18n="devices.pillBrightness">BRIGHTNESS</span><span class="pill" data-i18n="devices.pill2700">2700K</span></td><td class="check" data-i18n="devices.supported">✓ Supported</td></tr>
+        <tr><td><span class="model"><i></i>L520</span></td><td class="dtype" data-i18n="devices.t4type">Dimmable bulb</td><td><span class="pill cy" data-i18n="devices.pillBrightness">BRIGHTNESS</span><span class="pill" data-i18n="devices.pillTunable">TUNABLE</span></td><td class="check" data-i18n="devices.supported">✓ Supported</td></tr>
+        <tr><td><span class="model"><i></i>L610</span></td><td class="dtype" data-i18n="devices.t5type">Spot · dimmable</td><td><span class="pill cy" data-i18n="devices.pillBrightness">BRIGHTNESS</span><span class="pill" data-i18n="devices.pillSpot">SPOT</span></td><td class="check" data-i18n="devices.supported">✓ Supported</td></tr>
+        <tr><td><span class="model"><i></i>L630</span></td><td class="dtype" data-i18n="devices.t6type">Color bulb</td><td><span class="pill cy" data-i18n="devices.pillBrightness">BRIGHTNESS</span><span class="pill cy" data-i18n="devices.pillColor">COLOR RGB</span><span class="pill" data-i18n="devices.pillKRange">2700–6500K</span></td><td class="check" data-i18n="devices.supported">✓ Supported</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec wrap" id="faq">
+  <div class="kicker rv" data-i18n="faq.kicker">FAQ</div>
+  <h2 class="rv" data-i18n-html="faq.titleHtml">Questions, answered<br>locally.</h2>
+  <div class="faq">
+    <div class="qa rv"><button aria-expanded="false"><span data-i18n="faq.q1">Does Otapo need the Tapo cloud or internet?</span><span class="plus">+</span></button><div class="ans"><div class="ans-inner" data-i18n-html="faq.a1html">No. Control, discovery and authentication all happen on your LAN via the <code>KLAP</code> protocol. Once paired, you can unplug your WAN and everything keeps working. Zero egress, by design.</div></div></div>
+    <div class="qa rv"><button aria-expanded="false"><span data-i18n="faq.q2">Which devices are supported?</span><span class="plus">+</span></button><div class="ans"><div class="ans-inner" data-i18n-html="faq.a2html">Verified today: plugs <code>P100</code>, <code>P110</code> (with energy monitoring) and bulbs <code>L510</code>, <code>L520</code>, <code>L610</code>, <code>L630</code> (brightness, temperature and color where hardware allows). Support expands with each release.</div></div></div>
+    <div class="qa rv"><button aria-expanded="false"><span data-i18n="faq.q3">Is my data collected or sent anywhere?</span><span class="plus">+</span></button><div class="ans"><div class="ans-inner" data-i18n-html="faq.a3html">Never. No accounts on our side, no analytics, no telemetry. Energy history, schedules and credentials stay on your device, and backups are files you own and can export or delete at any time.</div></div></div>
+    <div class="qa rv"><button aria-expanded="false"><span data-i18n="faq.q4">How do multi-account and backup work?</span><span class="plus">+</span></button><div class="ans"><div class="ans-inner" data-i18n-html="faq.a4html">Add several Tapo accounts to split homes, rentals or family setups, then export your whole configuration to a single file. Moving phones? Import it and every device, room and schedule is back in seconds.</div></div></div>
+    <div class="qa rv"><button aria-expanded="false"><span data-i18n="faq.q5">Do I need my phone to use the Wear OS app?</span><span class="plus">+</span></button><div class="ans"><div class="ans-inner" data-i18n-html="faq.a5html">Only for the first sync. Afterwards your watch mirrors device state and sends LAN commands directly over Wi-Fi, so a quick toggle from your wrist works even if your phone is in another room.</div></div></div>
+  </div>
+
+  <div class="band rv">
+    <div class="kicker" style="justify-content:center" data-i18n="band.kicker">FREE · OPEN SOURCE · MIT</div>
+    <h2 data-i18n-html="band.titleHtml">Take your smart home<br><span class="grad">off the cloud.</span></h2>
+    <p class="lead" data-i18n="band.lead">Available in 16 languages. Grab the APK, star the repo, own your network.</p>
+    <div class="hero-cta">
+      <a href="https://github.com/asphalt123/otapo/releases/latest" target="_blank" rel="noopener" class="btn btn-cyan magnetic" data-i18n="band.ctaPrimary">Get the app</a>
+      <a href="https://github.com/asphalt123/otapo" target="_blank" rel="noopener" class="btn btn-ghost magnetic" data-i18n="band.ctaSecondary">View on GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid2">
+      <div class="fbrand">
+        <a class="brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8z" fill="#000"/></svg></span>Otapo</a>
+        <p data-i18n="footer.desc">Free, open-source Android + Wear OS control for Tapo — local KLAP, zero cloud, zero telemetry.</p>
+        <span class="mit"><i></i>MIT LICENSE</span>
+      </div>
+      <div class="fcol"><h4 data-i18n="footer.product">Product</h4><a href="#features" data-i18n="footer.features">Features</a><a href="#devices" data-i18n="footer.devices">Devices</a><a href="#faq" data-i18n="footer.faq">FAQ</a><a href="https://github.com/asphalt123/otapo" target="_blank" rel="noopener" data-i18n="footer.download">Download</a></div>
+      <div class="fcol"><h4 data-i18n="footer.community">Community</h4><a href="https://github.com/asphalt123/otapo" target="_blank" rel="noopener" data-i18n="footer.github">GitHub</a><a href="https://github.com/asphalt123/otapo/issues" target="_blank" rel="noopener" data-i18n="footer.issues">Issues</a><a href="https://github.com/asphalt123/otapo/discussions" target="_blank" rel="noopener" data-i18n="footer.discussions">Discussions</a><a href="https://github.com/asphalt123/otapo/releases" target="_blank" rel="noopener" data-i18n="footer.releases">Releases</a></div>
+      <div class="fcol"><h4 data-i18n="footer.legal">Legal</h4><a href="https://github.com/asphalt123/otapo/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="footer.mitLicense">MIT License</a><a href="https://github.com/asphalt123/otapo" target="_blank" rel="noopener" data-i18n="footer.privacy">Privacy: no data leaves LAN</a><a href="#top" data-i18n="footer.top">Back to top ↑</a></div>
+    </div>
+    <div class="fbottom"><span data-i18n="footer.rights">© 2026 OTAPO · LOCAL FIRST · BUILT FOR THE LAN</span><span>asphalt123.github.io/otapo · <span style="color:#00e5ff">●</span> <span data-i18n="footer.systems">ALL SYSTEMS LOCAL</span></span></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+/* ---------- Otapo i18n: one HTML file, translations loaded dynamically ---------- */
+(function(){
+  "use strict";
+  var SUPPORTED = ['en','fr','de','es','it','pt','nl','pl','ja','ko','zh','ar','ru','hi','tr','uk'];
+  var DEFAULT_LANG = 'en';
+  var STORE_KEY = 'otapo-lang';
+  var cache = {};
+
+  function norm(l){
+    if(!l) return null;
+    l = String(l).toLowerCase().replace('_','-').split('-')[0];
+    return SUPPORTED.indexOf(l) !== -1 ? l : null;
+  }
+  function langFromUrl(){
+    try{ return norm(new URLSearchParams(window.location.search).get('lang')); }
+    catch(e){ return null; }
+  }
+  function detect(){
+    return langFromUrl()
+      || (function(){ try{ return norm(localStorage.getItem(STORE_KEY)); }catch(e){ return null; } })()
+      || norm(navigator.language || (navigator.languages && navigator.languages[0]))
+      || DEFAULT_LANG;
+  }
+  function get(obj, path){
+    var parts = path.split('.'), cur = obj;
+    for(var i = 0; i < parts.length; i++){
+      if(cur == null || typeof cur !== 'object' || !(parts[i] in cur)) return undefined;
+      cur = cur[parts[i]];
+    }
+    return cur;
+  }
+  function setMeta(selector, attr, value){
+    if(value == null) return;
+    var m = document.querySelector(selector);
+    if(m) m.setAttribute(attr, value);
+  }
+  function apply(dict, lang){
+    if(!dict || typeof dict !== 'object') return;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    if(dict.meta){
+      if(dict.meta.title) document.title = dict.meta.title;
+      setMeta('meta[name="description"]', 'content', dict.meta.description);
+      setMeta('meta[property="og:title"]', 'content', dict.meta.ogTitle);
+      setMeta('meta[property="og:description"]', 'content', dict.meta.ogDesc);
+      setMeta('meta[name="twitter:title"]', 'content', dict.meta.twitterTitle);
+      setMeta('meta[name="twitter:description"]', 'content', dict.meta.twitterDesc);
+    }
+    document.querySelectorAll('[data-i18n]').forEach(function(n){
+      var v = get(dict, n.getAttribute('data-i18n'));
+      if(typeof v === 'string') n.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(n){
+      var v = get(dict, n.getAttribute('data-i18n-html'));
+      if(typeof v === 'string') n.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(n){
+      var v = get(dict, n.getAttribute('data-i18n-aria'));
+      if(typeof v === 'string') n.setAttribute('aria-label', v);
+    });
+    if(dict.marquee && Array.isArray(dict.marquee.items) && dict.marquee.items.length){
+      var items = document.querySelectorAll('.mq-item');
+      items.forEach(function(n, i){ n.textContent = dict.marquee.items[i % dict.marquee.items.length]; });
+    }
+    var sel = document.getElementById('langSelect');
+    if(sel){
+      sel.value = lang;
+      if(dict.nav && dict.nav.langLabel) sel.setAttribute('aria-label', dict.nav.langLabel);
+    }
+    if(dict.hero && Array.isArray(dict.hero.typeWords) && dict.hero.typeWords.length){
+      try{ window.dispatchEvent(new CustomEvent('otapo:words', {detail: dict.hero.typeWords})); }catch(e){}
+    }
+    /* keep an open FAQ answer sized correctly after text swap */
+    document.querySelectorAll('.qa.open .ans').forEach(function(a){ a.style.maxHeight = a.scrollHeight + 'px'; });
+  }
+  function fetchDict(lang){
+    if(cache[lang]) return Promise.resolve(cache[lang]);
+    return fetch('locales/' + lang + '.json', {cache: 'force-cache'})
+      .then(function(r){ if(!r.ok) throw new Error('i18n ' + r.status); return r.json(); })
+      .then(function(d){ cache[lang] = d; return d; });
+  }
+  function reflectUrl(lang){
+    try{
+      var u = new URL(window.location.href);
+      if(u.searchParams.get('lang') !== lang){ u.searchParams.set('lang', lang); window.history.replaceState(null, '', u); }
+    }catch(e){}
+  }
+  function load(lang, push){
+    lang = norm(lang) || DEFAULT_LANG;
+    fetchDict(lang).catch(function(){ return lang === DEFAULT_LANG ? null : fetchDict(DEFAULT_LANG); })
+      .then(function(dict){
+        if(dict) apply(dict, dict === cache[lang] ? lang : DEFAULT_LANG);
+        else apply(cache[lang] || {}, lang);
+        try{ localStorage.setItem(STORE_KEY, lang); }catch(e){}
+        if(push !== false) reflectUrl(lang);
+      })
+      .catch(function(){});
+  }
+  var sel = document.getElementById('langSelect');
+  if(sel) sel.addEventListener('change', function(){ load(sel.value, true); });
+  window.addEventListener('popstate', function(){ load(langFromUrl() || detect(), false); });
+  load(detect(), true);
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- GitHub stars (live, graceful fallback) ---------- */
+  try{
+    fetch('https://api.github.com/repos/asphalt123/otapo')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if(!d || typeof d.stargazers_count !== 'number') return;
+        var n = d.stargazers_count, s = n >= 1000 ? (n/1000).toFixed(1)+'k' : String(n);
+        document.getElementById('stars').textContent = s;
+      }).catch(function(){});
+  }catch(e){}
+
+  /* ---------- Typewriter ---------- */
+  var words = ['Local Control','No Cloud','KLAP Protocol','0 egress'];
+  var el = document.getElementById('typewriter'), wi = 0, ci = words[0].length, del = false;
+  window.addEventListener('otapo:words', function(e){
+    if(!e.detail || !e.detail.length) return;
+    words = e.detail;
+    if(reduced){ el.textContent = words[0]; return; }
+    wi = 0; ci = 0; del = false;
+  });
+  if(reduced){ el.textContent = words[0]; }
+  else{
+    (function tick(){
+      var w = words[wi];
+      el.textContent = w.slice(0, ci);
+      var t = del ? 32 : 62;
+      if(!del && ci === w.length){ t = 1500; del = true; }
+      else if(del && ci === 0){ del = false; wi = (wi+1)%words.length; t = 320; }
+      else ci += del ? -1 : 1;
+      setTimeout(tick, t);
+    })();
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.qa').forEach(function(qa){
+    var btn = qa.querySelector('button'), ans = qa.querySelector('.ans');
+    btn.addEventListener('click', function(){
+      var open = qa.classList.contains('open');
+      document.querySelectorAll('.qa.open').forEach(function(o){
+        o.classList.remove('open'); o.querySelector('.ans').style.maxHeight = null;
+        o.querySelector('button').setAttribute('aria-expanded','false');
+      });
+      if(!open){ qa.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  /* ---------- Mobile menu ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  menuBtn.addEventListener('click', function(){
+    document.getElementById('features').scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
+  });
+
+  /* ---------- Magnetic cursor ---------- */
+  if(!reduced && window.matchMedia('(pointer: fine)').matches){
+    document.querySelectorAll('.magnetic').forEach(function(b){
+      b.addEventListener('mousemove', function(e){
+        var r = b.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width/2, y = e.clientY - r.top - r.height/2;
+        b.style.transform = 'translate('+ x*0.16 +'px,'+ y*0.22 +'px) scale(1.03)';
+      });
+      b.addEventListener('mouseleave', function(){ b.style.transform = ''; });
+    });
+  }
+
+  /* ---------- Motion ---------- */
+  var hasGsap = typeof gsap !== 'undefined';
+  if(reduced || !hasGsap){
+    document.querySelectorAll('.rv,[data-hero]').forEach(function(n){ n.style.opacity = 1; n.style.transform = 'none'; });
+    document.querySelectorAll('.tilt-card').forEach(function(c){ c.style.transform = 'none'; });
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Lenis smooth scroll */
+  var lenis = null;
+  if(typeof Lenis !== 'undefined'){
+    lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id.length > 1 && document.querySelector(id)){
+        e.preventDefault();
+        if(lenis) lenis.scrollTo(id, {offset:-90}); else document.querySelector(id).scrollIntoView({behavior:'smooth'});
+      }
+    });
+  });
+
+  /* Hero entrance: split reveal stagger */
+  gsap.set('[data-hero]', {opacity:0, y:36});
+  gsap.to('[data-hero]', {opacity:1, y:0, duration:1.05, ease:'power3.out', stagger:0.12, delay:0.15});
+
+  /* Generic fade-up */
+  gsap.utils.toArray('.rv').forEach(function(n){
+    gsap.to(n, {opacity:1, y:0, duration:0.9, ease:'power3.out',
+      scrollTrigger:{trigger:n, start:'top 88%', once:true}});
+  });
+
+  /* 3D cards: redressent au scroll (rotateX from 28deg -> 0) */
+  gsap.utils.toArray('.tilt-card').forEach(function(card, i){
+    gsap.fromTo(card,
+      {rotateX:28, rotateY:(i-1)*10, y:70, opacity:0},
+      {rotateX:0, rotateY:0, y:0, opacity:1, duration:1.1, ease:'power3.out',
+       scrollTrigger:{trigger:'#cards3d', start:'top 85%', end:'top 35%', scrub:1}});
+  });
+
+  /* Subtle parallax on glows */
+  gsap.to('.bg-glow.g1', {y:120, scrollTrigger:{trigger:'body', start:'top top', end:'max', scrub:2}});
+})();
+</script>
+</body>
+</html>

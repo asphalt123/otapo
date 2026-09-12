@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Otapo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="main_activity_title">Устройства Tapo</string>
+    <string name="main_activity_devices">Устройства</string>
+    <string name="main_activity_groups">Группы устройств</string>
+    <string name="main_activity_loading">Поиск устройств Tapo…</string>
+    <string name="main_activity_not_found">Не найдено ни одного устройства Tapo</string>
+    <string name="main_activity_no_network">Не удалось подключиться к локальной сети Wi-Fi</string>
+    <string name="main_activity_reload_devices">Обновить список устройств</string>
+    <string name="main_activity_setup_new_device">Добавить новое устройство</string>
+    <string name="main_activity_new_group">Создать новую группу</string>
+    <string name="main_activity_del_group">Удалить выбранные группы</string>
+    <string name="login_activity_title">Войти</string>
+    <string name="login_activity_email">Адрес электронной почты</string>
+    <string name="login_activity_email_input">введите адрес почты</string>
+    <string name="login_activity_password">Пароль</string>
+    <string name="login_activity_password_input">введите пароль</string>
+    <string name="login_activity_save_password">Сохранить пароль</string>
+    <string name="login_activity_submit">Войти</string>
+    <string name="login_activity_submit_loading">Попытка входа…</string>
+    <string name="activity_login_signin_error">Неверное имя пользователя или пароль</string>
+    <string name="activity_login_input_field_empty">Необходимо указать действительные учетные данные</string>
+    <string name="device_activity_power">Питание: %s</string>
+    <string name="device_activity_power_on">ВКЛ</string>
+    <string name="device_activity_power_off">ВЫКЛ</string>
+    <string name="device_activity_brightness">Яркость: %d%%</string>
+    <string name="device_activity_color">Цвет: %s</string>
+    <string name="device_activity_wait">Пожалуйста, подождите…</string>
+    <string name="activity_main_not_found">устройство не найдено</string>
+    <string name="defines_the_brightness_value_for_seek_bar">задает значение яркости для ползунка</string>
+    <string name="new_group_activity_title">Создать новую группу для устройств: %d</string>
+    <string name="new_group_activity_group_name">Введите имя группы</string>
+    <string name="new_group_activity_group_name_placeholder">гостиная</string>
+    <string name="new_group_activity_group_name_error_empty_name">Имя группы не может быть пустым</string>
+    <string name="new_group_activity_group_name_error_duped">Группа с таким именем уже существует</string>
+    <string name="device_setup_activity_title">Добавить новое устройство</string>
+    <string name="device_setup_activity_device_address">Введите IP-адрес устройства</string>
+    <string name="device_setup_activity_device_address_hint">192.168.178.32</string>
+    <string name="device_setup_activity_error_bad_address">Вы ввели неверный адрес</string>
+    <string name="device_setup_activity_error_unreachable">Указанный хост недоступен</string>
+    <string name="device_setup_activity_error_handhshake_failed">Не удалось настроить хост как устройство Tapo</string>
+    <string name="device_setup_activity_loading_reachable">Попытка подключения к указанному хосту</string>
+    <string name="device_setup_activity_loading_setup">Попытка настройки устройства</string>
+    <string name="device_setup_activity_disclaimer">Требуется включенная опция "Third-Party Compatibility" в официальном приложении Tapo (Профиль → Настройки). Без нее устройства отклоняют локальные подключения.</string>
+    <string name="complication_config_title">Усложнение: какая розетка?</string>
+    <string name="complication_config_hint">Усложнение показывает состояние этой розетки на циферблате. Нажмите на усложнение, чтобы включить / выключить ее.</string>
+    <string name="complication_no_device">Нет известных розеток — откройте OpenTapo и сначала выполните поиск.</string>
+</resources>

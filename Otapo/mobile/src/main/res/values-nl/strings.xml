@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Otapo</string>
+    <string name="login_title">Tapo-login</string>
+    <string name="login_subtitle">Bedien je stekkers lokaal, zonder cloud</string>
+    <string name="login_hint">Je inloggegevens worden alleen gebruikt voor lokaal inloggen (KLAP) en worden gesynchroniseerd met je horloge.</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_password">Wachtwoord</string>
+    <string name="login_button">Inloggen</string>
+    <string name="device_list_title">Mijn apparaten</string>
+    <string name="device_list_subtitle">Lokale bediening via KLAP</string>
+    <string name="no_devices">Geen apparaten gevonden.\nZorg dat je telefoon op hetzelfde wifi-netwerk zit als je stekkers.</string>
+    <string name="refresh">Vernieuwen</string>
+    <string name="logout">Uitloggen</string>
+    <string name="add_by_ip">Toevoegen via IP</string>
+    <string name="add_device_title">Een apparaat toevoegen</string>
+    <string name="add_device_hint">Voer het lokale IP-adres van je Tapo-stekker/lamp in. Je vindt het in de officiële Tapo-app: apparaat → tandwielpictogram.</string>
+    <string name="add_device_ip_hint">IP-adres (bijv. 192.168.1.140)</string>
+    <string name="add_device_button">Toevoegen</string>
+    <string name="compatibility_disclaimer">⚠️ Om de app te laten werken, schakel “Third-party device compatibility” in in de officiële Tapo-app (Profiel → Instellingen). Zonder dit weigeren recente stekkers lokale verbindingen.</string>
+    <string name="error_generic">Er is een fout opgetreden: %1$s</string>
+    <string name="state_on">Aan</string>
+    <string name="state_off">Uit</string>
+    <string name="state_offline">Offline</string>
+    <string name="powering">Verzenden…</string>
+    <string name="cancel">Annuleren</string>
+    <string name="save">Opslaan</string>
+    <string name="delete">Verwijderen</string>
+    <string name="close">Sluiten</string>
+    <!-- Widgets -->
+    <string name="widget_label">OpenTapo-stekker</string>
+    <string name="widget_desc">Zet een Tapo-stekker aan/uit zonder de app te openen</string>
+    <string name="widget_turn_on">Aanzetten</string>
+    <string name="widget_turn_off">Uitzetten</string>
+    <string name="widget_no_device">Onbekende stekker</string>
+    <string name="widget_configure">Kies de stekker</string>
+    <string name="widget_config_title">Kies de widget-stekker</string>
+    <string name="widget_config_empty">Geen apparaten: open de app en voer eerst een scan uit.</string>
+    <!-- Generic picker -->
+    <string name="picker_title_default">Kies een apparaat</string>
+    <string name="picker_none">Geen</string>
+    <!-- Quick Settings Tile -->
+    <string name="tile_label">OpenTapo</string>
+    <string name="tile_no_favorite">Geen favoriete stekker — tik om te kiezen</string>
+    <string name="tile_pick_title">Kies de favoriete stekker</string>
+    <string name="tile_settings_title">Tegel voor snelle toegang</string>
+    <string name="tile_settings_hint">Deze stekker wordt bediend vanuit het meldingenpaneel (OpenTapo-tegel). Voeg de tegel toe via de bewerkknop van het snelle paneel.</string>
+    <string name="tile_current">Favoriet: %1$s (%2$s)</string>
+    <string name="tile_clear">Favoriet verwijderen</string>
+    <string name="menu_tile">Snelle tegel</string>
+    <!-- Notifications -->
+    <string name="notif_channel_timers">Timers</string>
+    <string name="notif_channel_monitor">Apparaatbewaking</string>
+    <string name="notif_channel_persistent">Permanente status</string>
+    <!-- Timers -->
+    <string name="menu_timers">Timers</string>
+    <string name="timer_pick_device">Kies het apparaat</string>
+    <string name="timer_device_label">Doelapparaat</string>
+    <string name="timer_no_device">Geen apparaat geselecteerd</string>
+    <string name="timer_need_device">Kies eerst een apparaat</string>
+    <string name="timer_countdown_title">Over X minuten aan- / uitzetten</string>
+    <string name="timer_minutes_hint">Minuten (bijv. 30)</string>
+    <string name="timer_target_on">Aanzetten (anders uitzetten)</string>
+    <string name="timer_start">Timer starten</string>
+    <string name="timer_bad_minutes">Voer 1 tot 10080 minuten in</string>
+    <string name="timer_started">Timer gestart (%1$d min)</string>
+    <string name="timer_none">Geen actieve timers.</string>
+    <string name="timer_row">%1$s → %2$s (over %3$s)</string>
+    <string name="timer_row_firing">%1$s → wordt geactiveerd…</string>
+    <string name="timer_remaining_hm">%1$du %2$dmin</string>
+    <string name="timer_remaining_m">%1$d min</string>
+    <string name="timer_expired_title">Timer: %1$s</string>
+    <string name="timer_expired_text">%1$s staat nu op %2$s.</string>
+    <string name="timer_failed_text">Kon %1$s niet bedienen (offline?). De timer is verlopen.</string>
+    <string name="timer_exact_hint">Sta exacte alarmen toe voor OpenTapo voor triggers op exacte tijden.</string>
+    <string name="timer_exact_grant">Exacte alarmen toestaan</string>
+    <string name="schedule_title">Terugkerende schema\'s</string>
+    <string name="schedule_add">Schema toevoegen</string>
+    <string name="schedule_added">Schema toegevoegd</string>
+    <string name="schedule_none">Geen schema\'s geprogrammeerd.</string>
+    <string name="schedule_every_day">elke dag</string>
+    <string name="schedule_days_hint">Geen dag = elke dag. Bijv.: elke dag om 23.00 uur uitzetten.</string>
+    <string name="schedule_row">%1$s → %2$s om %3$s (%4$s)</string>
+    <string name="schedule_fired_title">Schema: %1$s</string>
+    <string name="day_mon">ma</string>
+    <string name="day_tue">di</string>
+    <string name="day_wed">wo</string>
+    <string name="day_thu">do</string>
+    <string name="day_fri">vr</string>
+    <string name="day_sat">za</string>
+    <string name="day_sun">zo</string>
+    <!-- Device control -->
+    <string name="control_power">Vermogen</string>
+    <string name="control_brightness_value">Helderheid: %1$d %%</string>
+    <string name="control_color_title">Kleur</string>
+    <string name="control_color_hint">Raak het wiel aan om te kiezen, laat los om te verzenden.</string>
+    <string name="control_color_value">Kleur: tint %1$d, verzadiging %2$d</string>
+    <string name="control_temp_value">Wit: %1$d K</string>
+    <string name="menu_energy">Energie</string>
+    <!-- Energy -->
+    <string name="energy_subtitle">P110-monitor — elke 10 s uitlezen</string>
+    <string name="energy_power">%.1f W</string>
+    <string name="energy_today">Vandaag: %.3f kWh</string>
+    <string name="energy_month">Maand: %.2f kWh</string>
+    <string name="energy_unavailable">Meter niet beschikbaar</string>
+    <string name="energy_no_data">Nog geen metingen</string>
+    <!-- Offline monitoring -->
+    <string name="menu_monitor">Bewaking</string>
+    <string name="monitor_hint">Controleert elke stekker regelmatig lokaal (KLAP) en waarschuwt je als hij onbereikbaar wordt, weer online komt of buiten de app van status verandert.</string>
+    <string name="monitor_enabled">Bewaking inschakelen</string>
+    <string name="monitor_persistent">Permanente melding (stekkers aan)</string>
+    <string name="monitor_interval_title">Controlefrequentie (minuten)</string>
+    <string name="monitor_interval_value">Elke %1$d min controleren</string>
+    <string name="monitor_check_now">Nu controleren</string>
+    <string name="monitor_checking">Bezig met controleren…</string>
+    <string name="monitor_offline_title">Offline: %1$s</string>
+    <string name="monitor_offline_text">%1$s reageert niet meer lokaal. Controleer de stroom en je wifi.</string>
+    <string name="monitor_back_title">Terug: %1$s</string>
+    <string name="monitor_back_text">%1$s reageert weer lokaal.</string>
+    <string name="monitor_changed_title">Onverwachte wijziging: %1$s</string>
+    <string name="monitor_changed_text">%1$s staat nu op %2$s (buiten de app gewijzigd).</string>
+    <string name="monitor_persistent_title">OpenTapo</string>
+    <string name="monitor_persistent_text">%1$d/%2$d aan • %3$d offline</string>
+    <!-- Groups -->
+    <string name="menu_groups">Groepen</string>
+    <string name="group_list_hint">Lang indrukken = alles aan/uit. Slepen = sorteren. Vegen = verwijderen. Tikken = bewerken.</string>
+    <string name="group_none">Geen groepen — maak hieronder je eerste groep.</string>
+    <string name="group_members">%1$d stekker(s)</string>
+    <string name="group_summary">%1$d/%2$d aan</string>
+    <string name="group_card_hint">Lang: alles AAN/UIT • Tik: bewerken</string>
+    <string name="group_drag_hint">Sorteren</string>
+    <string name="group_create_title">Een groep maken</string>
+    <string name="group_name_hint">Groepsnaam (bijv. Woonkamer)</string>
+    <string name="group_name_empty">Geef de groep een naam</string>
+    <string name="group_name_exists">Er bestaat al een groep met deze naam</string>
+    <string name="group_deleted">Groep %1$s verwijderd</string>
+    <string name="group_empty">Deze groep bevat geen bekende stekkers</string>
+    <string name="group_applying">Groepsopdracht %1$s…</string>
+    <string name="group_applied">%1$s: %2$d/%3$d stekker(s) OK</string>
+    <string name="group_edit_title">Groep bewerken</string>
+    <string name="group_members_hint">Sleep om te sorteren, veeg of tik op prullenbak om te verwijderen.</string>
+    <string name="group_add_device">Een stekker toevoegen</string>
+    <string name="group_no_more_devices">Alle bekende stekkers staan al in de groep</string>
+    <string name="group_saved">Groep %1$s opgeslagen</string>
+    <string name="group_delete_title">%1$s verwijderen?</string>
+    <!-- Geofencing -->
+    <string name="menu_geofence">GPS-zones</string>
+    <string name="geofence_hint">Zet je stekkers aan bij het betreden van een gebied, uit bij het verlaten. Radius en acties stel je per zone in.</string>
+    <string name="geofence_label_hint">Zonenaam (bijv. Thuis)</string>
+    <string name="geofence_lat_hint">Breedtegraad (bijv. 48.85)</string>
+    <string name="geofence_lng_hint">Lengtegraad (bijv. 2.35)</string>
+    <string name="geofence_here">Mijn locatie gebruiken</string>
+    <string name="geofence_radius_value">Radius: %1$d m</string>
+    <string name="geofence_no_device">Geen stekker geselecteerd</string>
+    <string name="geofence_pick_devices">Kies stekkers</string>
+    <string name="geofence_on_enter">Bij binnenkomst</string>
+    <string name="geofence_on_exit">Bij vertrek</string>
+    <string name="geofence_action_on">Aanzetten</string>
+    <string name="geofence_action_off">Uitzetten</string>
+    <string name="geofence_action_none">Niets</string>
+    <string name="geofence_save">Zone toevoegen</string>
+    <string name="geofence_none">Geen zones gedefinieerd.</string>
+    <string name="geofence_added">Zone %1$s toegevoegd</string>
+    <string name="geofence_need_label">Geef de zone een naam</string>
+    <string name="geofence_need_coords">Ongeldige coördinaten (breedtegraad −90…90, lengtegraad −180…180)</string>
+    <string name="geofence_need_location">Sta locatie toe om GPS-zones te gebruiken</string>
+    <string name="geofence_no_fix">Locatie niet beschikbaar — probeer opnieuw buiten of met GPS aan</string>
+    <string name="geofence_fix_ok">Locatie ingevuld</string>
+    <string name="geofence_enter_title">Welkom: %1$s</string>
+    <string name="geofence_exit_title">Vertrek: %1$s</string>
+    <string name="geofence_applied">%1$s: %2$d/%3$d stekker(s) %4$s</string>
+    <!-- Multi-account -->
+    <string name="menu_accounts">Accounts</string>
+    <string name="account_hint">Wissel tussen je Tapo-accounts (thuis, werk…). Het actieve account stuurt de app en het horloge aan; elk account heeft zijn eigen apparaatnetwerk.</string>
+    <string name="account_none">Geen accounts — log eerst in.</string>
+    <string name="account_add_title">Een account toevoegen</string>
+    <string name="account_label_hint">Naam (bijv. Werk)</string>
+    <string name="account_need_all">Vul naam, e-mail en wachtwoord in</string>
+    <string name="account_added">Account %1$s toegevoegd</string>
+    <string name="account_switched">Actief account: %1$s — opnieuw scannen…</string>
+    <string name="account_deleted">Account %1$s verwijderd</string>
+    <string name="account_delete_title">%1$s verwijderen?</string>
+    <string name="account_delete_hint">De apparaten van dit account worden op deze telefoon vergeten.</string>
+    <!-- Voice shortcuts -->
+    <string name="menu_voice">Spraakassistent</string>
+    <string name="voice_intro">Bedien je stekkers met je stem of via lang indrukken op het OpenTapo-pictogram. Probeer:</string>
+    <string name="voice_examples">• “Ok Google, zet de woonkamerstekker aan met OpenTapo”\n• “Ok Google, zet de kantoorstekker uit met OpenTapo”\n• Druk lang op het OpenTapo-pictogram → tik op een stekker om te schakelen\n• Deep link: opentapo://toggle?device=LivingRoom&amp;state=on</string>
+    <string name="voice_publish">Stekkersnelkoppelingen publiceren</string>
+    <string name="voice_published">Snelkoppelingen gepubliceerd naar starter</string>
+    <string name="voice_no_match">Geen stekker herkend — noem de naam zoals in de lijst</string>
+    <string name="voice_all_result">%1$d/%2$d stekker(s) bediend</string>
+    <string name="voice_all_on">Alles aanzetten</string>
+    <string name="voice_all_off">Alles uitzetten</string>
+    <string name="voice_shortcut_long">%1$s — schakelen naar %2$s</string>
+    <!-- Backup/Restore -->
+    <string name="menu_backup">Back-up</string>
+    <string name="backup_hint">Exporteer apparaten, groepen, GPS-zones, timers en accounts (wachtwoorden versleuteld met je wachtzin) naar een JSON-bestand. Om te delen: verstuur het bestand + de wachtzin via twee aparte kanalen.</string>
+    <string name="backup_passphrase_hint">Wachtzin (min. 4 tekens)</string>
+    <string name="backup_need_passphrase">Kies een wachtzin van minstens 4 tekens</string>
+    <string name="backup_export">Exporteren naar bestand</string>
+    <string name="backup_import">Herstellen uit bestand</string>
+    <string name="backup_share">Laatste export delen</string>
+    <string name="backup_share_subject">OpenTapo-back-up</string>
+    <string name="backup_export_first">Exporteer eerst de back-up</string>
+    <string name="backup_exported">Back-up geëxporteerd</string>
+    <string name="backup_imported">Back-up hersteld (%1$d account(s)) — opnieuw scannen…</string>
+</resources>

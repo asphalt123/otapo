@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Otapo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="main_activity_title">Appareils Tapo</string>
+    <string name="main_activity_devices">Appareils</string>
+    <string name="main_activity_groups">Groupes d\'appareils</string>
+    <string name="main_activity_loading">Recherche des appareils Tapo…</string>
+    <string name="main_activity_not_found">Aucun appareil Tapo trouvé</string>
+    <string name="main_activity_no_network">Impossible de se connecter au réseau WiFi local</string>
+    <string name="main_activity_reload_devices">Recharger la liste des appareils</string>
+    <string name="main_activity_setup_new_device">Ajouter un appareil</string>
+    <string name="main_activity_new_group">Créer un groupe</string>
+    <string name="main_activity_del_group">Supprimer les groupes sélectionnés</string>
+    <string name="login_activity_title">Connexion</string>
+    <string name="login_activity_email">Adresse e-mail</string>
+    <string name="login_activity_email_input">saisis ton e-mail</string>
+    <string name="login_activity_password">Mot de passe</string>
+    <string name="login_activity_password_input">saisis ton mot de passe</string>
+    <string name="login_activity_save_password">Enregistrer le mot de passe</string>
+    <string name="login_activity_submit">Se connecter</string>
+    <string name="login_activity_submit_loading">Connexion en cours…</string>
+    <string name="activity_login_signin_error">Nom d\'utilisateur ou mot de passe invalide</string>
+    <string name="activity_login_input_field_empty">Tu dois fournir des identifiants valides</string>
+    <string name="device_activity_power">Alimentation : %s</string>
+    <string name="device_activity_power_on">ALLUMÉ</string>
+    <string name="device_activity_power_off">ÉTEINT</string>
+    <string name="device_activity_brightness">Luminosité : %d%%</string>
+    <string name="device_activity_color">Couleur : %s</string>
+    <string name="device_activity_wait">Patiente…</string>
+    <string name="activity_main_not_found">aucun appareil trouvé</string>
+    <string name="defines_the_brightness_value_for_seek_bar">définit la valeur de luminosité du curseur</string>
+    <string name="new_group_activity_title">Créer un groupe de %d appareils</string>
+    <string name="new_group_activity_group_name">Entre le nom du groupe</string>
+    <string name="new_group_activity_group_name_placeholder">salon</string>
+    <string name="new_group_activity_group_name_error_empty_name">Le nom du groupe ne peut pas être vide</string>
+    <string name="new_group_activity_group_name_error_duped">Un groupe avec ce nom existe déjà</string>
+    <string name="device_setup_activity_title">Ajouter un appareil</string>
+    <string name="device_setup_activity_device_address">Entre l\'adresse IP de l\'appareil</string>
+    <string name="device_setup_activity_device_address_hint">192.168.178.32</string>
+    <string name="device_setup_activity_error_bad_address">Tu as saisi une mauvaise adresse</string>
+    <string name="device_setup_activity_error_unreachable">L\'hôte fourni est injoignable</string>
+    <string name="device_setup_activity_error_handhshake_failed">Impossible de configurer l\'hôte comme appareil Tapo</string>
+    <string name="device_setup_activity_loading_reachable">Connexion à l\'hôte fourni en cours</string>
+    <string name="device_setup_activity_loading_setup">Configuration de l\'appareil en cours</string>
+    <string name="device_setup_activity_disclaimer">Nécessite l\'option « Compatibilité des appareils tiers » activée dans l\'app Tapo officielle (Profil → Paramètres). Sans ça, les appareils refusent les connexions locales.</string>
+    <string name="complication_config_title">Complication : quelle prise ?</string>
+    <string name="complication_config_hint">La complication affiche l\'état de cette prise sur ton cadran. Touche la complication pour l\'allumer / l\'éteindre.</string>
+    <string name="complication_no_device">Aucune prise connue — ouvre OpenTapo et scanne d\'abord.</string>
+</resources>

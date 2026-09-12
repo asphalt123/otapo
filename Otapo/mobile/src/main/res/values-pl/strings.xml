@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Otapo</string>
+    <string name="login_title">Logowanie Tapo</string>
+    <string name="login_subtitle">Steruj gniazdkami lokalnie, bez chmury</string>
+    <string name="login_hint">Dane logowania służą tylko do logowania lokalnego (KLAP) i są synchronizowane z zegarkiem.</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_password">Hasło</string>
+    <string name="login_button">Zaloguj się</string>
+    <string name="device_list_title">Moje urządzenia</string>
+    <string name="device_list_subtitle">Sterowanie lokalne przez KLAP</string>
+    <string name="no_devices">Nie znaleziono urządzeń.\nUpewnij się, że telefon jest w tej samej sieci Wi-Fi co gniazdka.</string>
+    <string name="refresh">Odśwież</string>
+    <string name="logout">Wyloguj się</string>
+    <string name="add_by_ip">Dodaj po IP</string>
+    <string name="add_device_title">Dodaj urządzenie</string>
+    <string name="add_device_hint">Wpisz lokalny adres IP gniazdka/lampy Tapo. Znajdziesz go w oficjalnej aplikacji Tapo: urządzenie → ikona zębatki.</string>
+    <string name="add_device_ip_hint">Adres IP (np. 192.168.1.140)</string>
+    <string name="add_device_button">Dodaj</string>
+    <string name="compatibility_disclaimer">⚠️ Aby aplikacja działała, włącz opcję “Third-party device compatibility” w oficjalnej aplikacji Tapo (Profil → Ustawienia). Bez tego nowe gniazdka odrzucają połączenia lokalne.</string>
+    <string name="error_generic">Wystąpił błąd: %1$s</string>
+    <string name="state_on">Włączone</string>
+    <string name="state_off">Wyłączone</string>
+    <string name="state_offline">Offline</string>
+    <string name="powering">Wysyłanie…</string>
+    <string name="cancel">Anuluj</string>
+    <string name="save">Zapisz</string>
+    <string name="delete">Usuń</string>
+    <string name="close">Zamknij</string>
+    <!-- Widgets -->
+    <string name="widget_label">Gniazdko OpenTapo</string>
+    <string name="widget_desc">Włącz/wyłącz gniazdko Tapo bez otwierania aplikacji</string>
+    <string name="widget_turn_on">Włącz</string>
+    <string name="widget_turn_off">Wyłącz</string>
+    <string name="widget_no_device">Nieznane gniazdko</string>
+    <string name="widget_configure">Wybierz gniazdko</string>
+    <string name="widget_config_title">Wybierz gniazdko widżetu</string>
+    <string name="widget_config_empty">Brak urządzeń: otwórz aplikację i najpierw przeskanuj.</string>
+    <!-- Generic picker -->
+    <string name="picker_title_default">Wybierz urządzenie</string>
+    <string name="picker_none">Brak</string>
+    <!-- Quick Settings Tile -->
+    <string name="tile_label">OpenTapo</string>
+    <string name="tile_no_favorite">Brak ulubionego gniazdka — dotknij, aby wybrać</string>
+    <string name="tile_pick_title">Wybierz ulubione gniazdko</string>
+    <string name="tile_settings_title">Kafelek szybkiego dostępu</string>
+    <string name="tile_settings_hint">To gniazdko będzie sterowane z panelu powiadomień (kafelek OpenTapo). Dodaj kafelek przyciskiem edycji szybkiego panelu.</string>
+    <string name="tile_current">Ulubione: %1$s (%2$s)</string>
+    <string name="tile_clear">Usuń ulubione</string>
+    <string name="menu_tile">Szybki kafelek</string>
+    <!-- Notifications -->
+    <string name="notif_channel_timers">Timery</string>
+    <string name="notif_channel_monitor">Monitorowanie urządzeń</string>
+    <string name="notif_channel_persistent">Trwały status</string>
+    <!-- Timers -->
+    <string name="menu_timers">Timery</string>
+    <string name="timer_pick_device">Wybierz urządzenie</string>
+    <string name="timer_device_label">Urządzenie docelowe</string>
+    <string name="timer_no_device">Nie wybrano urządzenia</string>
+    <string name="timer_need_device">Najpierw wybierz urządzenie</string>
+    <string name="timer_countdown_title">Wyłącz / włącz za X minut</string>
+    <string name="timer_minutes_hint">Minuty (np. 30)</string>
+    <string name="timer_target_on">Włącz (w przeciwnym razie wyłącz)</string>
+    <string name="timer_start">Uruchom timer</string>
+    <string name="timer_bad_minutes">Wpisz od 1 do 10080 minut</string>
+    <string name="timer_started">Timer uruchomiony (%1$d min)</string>
+    <string name="timer_none">Brak aktywnych timerów.</string>
+    <string name="timer_row">%1$s → %2$s (za %3$s)</string>
+    <string name="timer_row_firing">%1$s → wyzwalanie…</string>
+    <string name="timer_remaining_hm">%1$dg %2$dmin</string>
+    <string name="timer_remaining_m">%1$d min</string>
+    <string name="timer_expired_title">Timer: %1$s</string>
+    <string name="timer_expired_text">%1$s ma teraz stan %2$s.</string>
+    <string name="timer_failed_text">Nie można sterować %1$s (offline?). Timer wygasł.</string>
+    <string name="timer_exact_hint">Aby wyzwalać o dokładnej godzinie, zezwól na dokładne alarmy dla OpenTapo.</string>
+    <string name="timer_exact_grant">Zezwól na dokładne alarmy</string>
+    <string name="schedule_title">Harmonogramy cykliczne</string>
+    <string name="schedule_add">Dodaj harmonogram</string>
+    <string name="schedule_added">Dodano harmonogram</string>
+    <string name="schedule_none">Brak zaprogramowanych harmonogramów.</string>
+    <string name="schedule_every_day">codziennie</string>
+    <string name="schedule_days_hint">Brak dnia = codziennie. Np.: wyłączaj codziennie o 23:00.</string>
+    <string name="schedule_row">%1$s → %2$s o %3$s (%4$s)</string>
+    <string name="schedule_fired_title">Harmonogram: %1$s</string>
+    <string name="day_mon">pon</string>
+    <string name="day_tue">wt</string>
+    <string name="day_wed">śr</string>
+    <string name="day_thu">czw</string>
+    <string name="day_fri">pt</string>
+    <string name="day_sat">sob</string>
+    <string name="day_sun">nie</string>
+    <!-- Device control -->
+    <string name="control_power">Zasilanie</string>
+    <string name="control_brightness_value">Jasność: %1$d %%</string>
+    <string name="control_color_title">Kolor</string>
+    <string name="control_color_hint">Dotknij koła, aby wybrać, puść, aby wysłać.</string>
+    <string name="control_color_value">Kolor: odcień %1$d, nasycenie %2$d</string>
+    <string name="control_temp_value">Biały: %1$d K</string>
+    <string name="menu_energy">Energia</string>
+    <!-- Energy -->
+    <string name="energy_subtitle">Monitor P110 — odczyt co 10 s</string>
+    <string name="energy_power">%.1f W</string>
+    <string name="energy_today">Dziś: %.3f kWh</string>
+    <string name="energy_month">Miesiąc: %.2f kWh</string>
+    <string name="energy_unavailable">Licznik niedostępny</string>
+    <string name="energy_no_data">Brak pomiarów</string>
+    <!-- Offline monitoring -->
+    <string name="menu_monitor">Monitorowanie</string>
+    <string name="monitor_hint">Okresowo sprawdza każde gniazdko lokalnie (KLAP) i powiadamia, gdy stanie się nieosiągalne, wróci online lub zmieni stan poza aplikacją.</string>
+    <string name="monitor_enabled">Włącz monitorowanie</string>
+    <string name="monitor_persistent">Trwałe powiadomienie (gniazdka włączone)</string>
+    <string name="monitor_interval_title">Częstotliwość sprawdzania (minuty)</string>
+    <string name="monitor_interval_value">Sprawdzaj co %1$d min</string>
+    <string name="monitor_check_now">Sprawdź teraz</string>
+    <string name="monitor_checking">Sprawdzanie…</string>
+    <string name="monitor_offline_title">Offline: %1$s</string>
+    <string name="monitor_offline_text">%1$s przestało odpowiadać lokalnie. Sprawdź zasilanie i Wi-Fi.</string>
+    <string name="monitor_back_title">Powrót: %1$s</string>
+    <string name="monitor_back_text">%1$s znów odpowiada lokalnie.</string>
+    <string name="monitor_changed_title">Nieoczekiwana zmiana: %1$s</string>
+    <string name="monitor_changed_text">%1$s ma teraz stan %2$s (zmieniono poza aplikacją).</string>
+    <string name="monitor_persistent_title">OpenTapo</string>
+    <string name="monitor_persistent_text">%1$d/%2$d włączonych • %3$d offline</string>
+    <!-- Groups -->
+    <string name="menu_groups">Grupy</string>
+    <string name="group_list_hint">Przytrzymanie = włącz/wyłącz wszystko. Przeciągnięcie = zmiana kolejności. Przesunięcie = usunięcie. Dotknięcie = edycja.</string>
+    <string name="group_none">Brak grup — utwórz pierwszą grupę poniżej.</string>
+    <string name="group_members">%1$d gniazdko/gniazdka</string>
+    <string name="group_summary">%1$d/%2$d włączonych</string>
+    <string name="group_card_hint">Długie: wszystko WŁ./WYŁ. • Dotknij: edytuj</string>
+    <string name="group_drag_hint">Zmień kolejność</string>
+    <string name="group_create_title">Utwórz grupę</string>
+    <string name="group_name_hint">Nazwa grupy (np. Salon)</string>
+    <string name="group_name_empty">Nadaj grupie nazwę</string>
+    <string name="group_name_exists">Grupa o tej nazwie już istnieje</string>
+    <string name="group_deleted">Usunięto grupę %1$s</string>
+    <string name="group_empty">Ta grupa nie zawiera znanych gniazdek</string>
+    <string name="group_applying">Polecenie grupowe %1$s…</string>
+    <string name="group_applied">%1$s: %2$d/%3$d gniazdek OK</string>
+    <string name="group_edit_title">Edytuj grupę</string>
+    <string name="group_members_hint">Przeciągnij, aby zmienić kolejność, przesuń lub dotknij kosza, aby usunąć.</string>
+    <string name="group_add_device">Dodaj gniazdko</string>
+    <string name="group_no_more_devices">Wszystkie znane gniazdka są już w grupie</string>
+    <string name="group_saved">Zapisano grupę %1$s</string>
+    <string name="group_delete_title">Usunąć %1$s?</string>
+    <!-- Geofencing -->
+    <string name="menu_geofence">Strefy GPS</string>
+    <string name="geofence_hint">Włączaj gniazdka przy wejściu do strefy, wyłączaj przy wyjściu. Promień i akcje ustawia się dla każdej strefy.</string>
+    <string name="geofence_label_hint">Nazwa strefy (np. Dom)</string>
+    <string name="geofence_lat_hint">Szerokość (np. 48.85)</string>
+    <string name="geofence_lng_hint">Długość (np. 2.35)</string>
+    <string name="geofence_here">Użyj mojej lokalizacji</string>
+    <string name="geofence_radius_value">Promień: %1$d m</string>
+    <string name="geofence_no_device">Nie wybrano gniazdka</string>
+    <string name="geofence_pick_devices">Wybierz gniazdka</string>
+    <string name="geofence_on_enter">Przy wejściu</string>
+    <string name="geofence_on_exit">Przy wyjściu</string>
+    <string name="geofence_action_on">Włącz</string>
+    <string name="geofence_action_off">Wyłącz</string>
+    <string name="geofence_action_none">Nic</string>
+    <string name="geofence_save">Dodaj strefę</string>
+    <string name="geofence_none">Brak zdefiniowanych stref.</string>
+    <string name="geofence_added">Dodano strefę %1$s</string>
+    <string name="geofence_need_label">Nadaj strefie nazwę</string>
+    <string name="geofence_need_coords">Nieprawidłowe współrzędne (szerokość −90…90, długość −180…180)</string>
+    <string name="geofence_need_location">Zezwól na lokalizację, aby używać stref GPS</string>
+    <string name="geofence_no_fix">Lokalizacja niedostępna — spróbuj ponownie na zewnątrz lub z włączonym GPS</string>
+    <string name="geofence_fix_ok">Wypełniono lokalizację</string>
+    <string name="geofence_enter_title">Witaj: %1$s</string>
+    <string name="geofence_exit_title">Wyjście: %1$s</string>
+    <string name="geofence_applied">%1$s: %2$d/%3$d gniazdek %4$s</string>
+    <!-- Multi-account -->
+    <string name="menu_accounts">Konta</string>
+    <string name="account_hint">Przełączaj konta Tapo (dom, praca…). Aktywne konto steruje aplikacją i zegarkiem; każde konto ma własną sieć urządzeń.</string>
+    <string name="account_none">Brak kont — najpierw się zaloguj.</string>
+    <string name="account_add_title">Dodaj konto</string>
+    <string name="account_label_hint">Nazwa (np. Praca)</string>
+    <string name="account_need_all">Wypełnij nazwę, e-mail i hasło</string>
+    <string name="account_added">Dodano konto %1$s</string>
+    <string name="account_switched">Aktywne konto: %1$s — ponowne skanowanie…</string>
+    <string name="account_deleted">Usunięto konto %1$s</string>
+    <string name="account_delete_title">Usunąć %1$s?</string>
+    <string name="account_delete_hint">Urządzenia tego konta zostaną zapomniane na tym telefonie.</string>
+    <!-- Voice shortcuts -->
+    <string name="menu_voice">Asystent głosowy</string>
+    <string name="voice_intro">Steruj gniazdkami głosowo lub przytrzymując ikonę OpenTapo. Spróbuj:</string>
+    <string name="voice_examples">• “Ok Google, włącz gniazdko w salonie przez OpenTapo”\n• “Ok Google, wyłącz gniazdko w biurze przez OpenTapo”\n• Przytrzymaj ikonę OpenTapo → dotknij gniazdka, aby je przełączyć\n• Deep link: opentapo://toggle?device=LivingRoom&amp;state=on</string>
+    <string name="voice_publish">Opublikuj skróty gniazdek</string>
+    <string name="voice_published">Opublikowano skróty w programie uruchamiającym</string>
+    <string name="voice_no_match">Nie rozpoznano gniazdka — wypowiedz nazwę widoczną na liście</string>
+    <string name="voice_all_result">Sterowano %1$d/%2$d gniazdek</string>
+    <string name="voice_all_on">Włącz wszystko</string>
+    <string name="voice_all_off">Wyłącz wszystko</string>
+    <string name="voice_shortcut_long">%1$s — przełącz na %2$s</string>
+    <!-- Backup/Restore -->
+    <string name="menu_backup">Kopia zapasowa</string>
+    <string name="backup_hint">Eksportuj urządzenia, grupy, strefy GPS, timery i konta (hasła szyfrowane frazą) do pliku JSON. Aby udostępnić: wyślij plik + frazę dwoma oddzielnymi kanałami.</string>
+    <string name="backup_passphrase_hint">Fraza (min. 4 znaki)</string>
+    <string name="backup_need_passphrase">Wybierz frazę o długości co najmniej 4 znaków</string>
+    <string name="backup_export">Eksportuj do pliku</string>
+    <string name="backup_import">Przywróć z pliku</string>
+    <string name="backup_share">Udostępnij ostatni eksport</string>
+    <string name="backup_share_subject">Kopia zapasowa OpenTapo</string>
+    <string name="backup_export_first">Najpierw wyeksportuj kopię zapasową</string>
+    <string name="backup_exported">Wyeksportowano kopię zapasową</string>
+    <string name="backup_imported">Przywrócono kopię zapasową (%1$d kont) — ponowne skanowanie…</string>
+</resources>

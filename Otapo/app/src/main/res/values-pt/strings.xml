@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Otapo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="main_activity_title">Dispositivos Tapo</string>
+    <string name="main_activity_devices">Dispositivos</string>
+    <string name="main_activity_groups">Grupos de dispositivos</string>
+    <string name="main_activity_loading">A procurar dispositivos Tapo…</string>
+    <string name="main_activity_not_found">Não foi encontrado nenhum dispositivo Tapo</string>
+    <string name="main_activity_no_network">Não foi possível ligar à rede Wi-Fi local</string>
+    <string name="main_activity_reload_devices">Recarregar lista de dispositivos</string>
+    <string name="main_activity_setup_new_device">Adicionar novo dispositivo</string>
+    <string name="main_activity_new_group">Criar novo grupo</string>
+    <string name="main_activity_del_group">Remover grupos selecionados</string>
+    <string name="login_activity_title">Iniciar sessão</string>
+    <string name="login_activity_email">Endereço de e-mail</string>
+    <string name="login_activity_email_input">introduz o e-mail</string>
+    <string name="login_activity_password">Palavra-passe</string>
+    <string name="login_activity_password_input">introduz a palavra-passe</string>
+    <string name="login_activity_save_password">Guardar palavra-passe</string>
+    <string name="login_activity_submit">Iniciar sessão</string>
+    <string name="login_activity_submit_loading">A tentar iniciar sessão…</string>
+    <string name="activity_login_signin_error">Nome de utilizador ou palavra-passe inválidos</string>
+    <string name="activity_login_input_field_empty">Tens de fornecer credenciais válidas</string>
+    <string name="device_activity_power">Energia: %s</string>
+    <string name="device_activity_power_on">LIGADO</string>
+    <string name="device_activity_power_off">DESLIGADO</string>
+    <string name="device_activity_brightness">Brilho: %d%%</string>
+    <string name="device_activity_color">Cor: %s</string>
+    <string name="device_activity_wait">Aguarda, por favor…</string>
+    <string name="activity_main_not_found">nenhum dispositivo encontrado</string>
+    <string name="defines_the_brightness_value_for_seek_bar">define o valor de brilho da barra de ajuste</string>
+    <string name="new_group_activity_title">Criar novo grupo para %d dispositivos</string>
+    <string name="new_group_activity_group_name">Introduz o nome do grupo</string>
+    <string name="new_group_activity_group_name_placeholder">sala de estar</string>
+    <string name="new_group_activity_group_name_error_empty_name">O nome do grupo não pode estar vazio</string>
+    <string name="new_group_activity_group_name_error_duped">Já existe um grupo com este nome</string>
+    <string name="device_setup_activity_title">Adicionar novo dispositivo</string>
+    <string name="device_setup_activity_device_address">Introduz o endereço IP do dispositivo</string>
+    <string name="device_setup_activity_device_address_hint">192.168.178.32</string>
+    <string name="device_setup_activity_error_bad_address">Introduziste um endereço inválido</string>
+    <string name="device_setup_activity_error_unreachable">O anfitrião indicado não está acessível</string>
+    <string name="device_setup_activity_error_handhshake_failed">Não foi possível configurar o anfitrião como dispositivo Tapo</string>
+    <string name="device_setup_activity_loading_reachable">A tentar ligar ao anfitrião indicado</string>
+    <string name="device_setup_activity_loading_setup">A tentar configurar o dispositivo</string>
+    <string name="device_setup_activity_disclaimer">Requer "Third-Party Compatibility" ativado na app oficial Tapo (Perfil → Definições). Sem isso, os dispositivos recusam ligações locais.</string>
+    <string name="complication_config_title">Complicação: qual tomada?</string>
+    <string name="complication_config_hint">A complicação mostra o estado desta tomada no mostrador do relógio. Toca na complicação para a ligar / desligar.</string>
+    <string name="complication_no_device">Sem tomadas conhecidas — abre o OpenTapo e faz uma procura primeiro.</string>
+</resources>
